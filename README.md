@@ -1,1 +1,1 @@
-# Useful Documentation for Azure WebLogic Offers
+# Useful Guides for Azure WebLogic Offers
