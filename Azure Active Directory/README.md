@@ -5,20 +5,23 @@ Firstly, set up LDAP server.  Azure AD does not support the Lightweight Director
 
 ## Step 1: Create a cloud-only user if you don't have one  
 If you have a cloud-only user in your subscription, please skip this step.  
-Before creating Azure AD DS, please follow the [guide]("\cloud-only user.md") to create a cloud-only user for LADP connection. We will use the user to login LDAP server in the following steps.  
+Before creating Azure AD DS, please follow the [guide](cloud-only-user.md) to create a cloud-only user for LADP connection. We will use the user to login LDAP server in the following steps.  
 
 ## Step 2: Create domain service and configure LDAP  
 If you have a domain service, please go to configure LDAP.  
 * Create a domain service  
-Please follow the [document]("\create domain service.md") to create your domain service, after finishing deployment, a running domain servcie is created, such as example.com. Please remeber to confige DNS!  
-Please follow the [document]("\configure ad ds ldap.md") to configure secure LDAP for you domain, after successful deployment, we will have LDAP server running, such as ldaps.example.com. SSL is only allow to access the ldap server, port is 636.  
+Please follow the [document](create-domain-service.md) to create your domain service, after finishing deployment, a running domain servcie is created, such as example.com. Please remeber to confige DNS!  
+We have to reset user password before login to the domain. Please follow [guide](cloud-only-user.md) to reset password, it takes about half an hour to work correctly.  
+
+Please follow the [document](configure-ad-ds-ldap.md) to configure secure LDAP for you domain, after successful deployment, we will have LDAP server running, such as ldaps.example.com. SSL is only allow to access the ldap server, port is 636.  
 We have to add a rule to network security group to allow access to LDAP server.  
+
 Please go to your resource group, click adds-nsg, go to Settings, click Inbound security rules, click Add, and input your information as following, then click save.  
 ![Create rule to allow LDAP access](images/img-allowldaps.PNG)
-Please follow the [document]("\configure ad ds ldap.md") to test LDAP server.  
+Please follow the [document](configure-ad-ds-ldap.md) to test LDAP server.  
 
 ## Step 3: Configure WLS LDAP  
-Please follow the [document]("\configure wls ldap.md") to configure WebLogic Server.  
+Please follow the [document](configure-wls-ldap.md) to configure WebLogic Server.  
 
 You will integrate Active Directory with WebLogic Server after finishing above steps. Well done!  
 
