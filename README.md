@@ -1,1 +1,1 @@
-# doc4azurewls
+# Useful Documentation for Azure WebLogic Offers
