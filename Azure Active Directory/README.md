@@ -17,7 +17,7 @@ Please follow the [Configure ADDS LDAP](docs/configure-ad-ds-ldap.md) to configu
 We have to add a rule to network security group to allow access to LDAP server.  
 
 Please go to your resource group, click adds-nsg, go to Settings, click Inbound security rules, click Add, and input your information as following, then click save.  
-![Create rule to allow LDAP access](images/img-allowldaps.PNG)
+![Create rule to allow LDAP access](docs/images/img-allowldaps.PNG)
 Please follow the [Configure ADDS LDAP](docs/configure-ad-ds-ldap.md) to test LDAP server.  
 
 ## Step 3: Configure WLS LDAP  
