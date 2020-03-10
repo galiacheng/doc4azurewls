@@ -1,4 +1,4 @@
-This document describe how to create a cloud only user and reset password.  
+This document describes how to create a cloud only user and reset password.  
 
 ## Create Cloud Only User  
 1. Go to Azure Portal  
