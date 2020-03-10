@@ -21,6 +21,7 @@ Important steps are listed here:
 6. Keep the Networking section as defaut.  
 7. Administration  
    Click AAD DC Administrators group and add the user you created. Users in this group have permission to query and list users of the domain. We will use it in WebLogic LDAP Server configuration.  
+   ![Add AAD DC Administrators](images/Add-AADDC-Administrators.PNG)  
 8. Click Review and create.  
 9. It will take about 2 hours to deploy the service.  
 10. Update DNS server setting for your virtual network. After deploy successfully, go to resource group wls-test, and click domain wls-security.com, you will open Overview page. There will be a panel called Required configuration steps, you will see Update DNS server setting for your virtual network, click button Configure to set DNS. It will take several minutes to finish it.  
