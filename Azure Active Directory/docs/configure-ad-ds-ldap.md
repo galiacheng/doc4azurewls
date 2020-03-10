@@ -13,7 +13,7 @@ If you don't want to create one, you can use the testing ca first.
 1. Go to domain wls-security.com  
 2. Click Secure LDAP  
 3. Enable LDAP and input certificate as following:  
-![Secure LDAP](images/secure-adds-ldap.PNG)  
+![Secure LDAP](../images/secure-adds-ldap.PNG)  
 
 ### Step 3 Lock down secure LDAP access over the internet
 Please follow [Lock down secure LDAP access over the internet](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/tutorial-configure-ldaps#lock-down-secure-ldap-access-over-the-internet) to add you machine ip address to network security group.  
@@ -25,7 +25,7 @@ Please follow [Configure DNS zone for external access](https://docs.microsoft.co
 
 ### Step 5 Install client CA  
 Install azure-ad-ds-client.cer to you machine to access the ldap server.  
-![Secure LDAP](images/install-client-ca.PNG)
+![Secure LDAP](../images/install-client-ca.PNG)
 
 ### Step 6 Test Managed Domain
 Though we can use ldp.exe to test the domain, Apache Directory Studio is recommended for easy query.  
@@ -36,7 +36,7 @@ You can follow [Test queries to the managed domain](https://docs.microsoft.com/e
 Note: You have to connect to ldap server successfully, then bind a user.  
 Address of ldap server is ldaps.wls-security.com, port is 636, domain is wls-security.com. AD DS is only SSL access now.  
 Pay attension to the user name, actually, we create user wlstest@yourtenant.com, just input the user name. Besides, the user must be belonging to the AAD DC Administrators group.  
-  ![Secure LDAP](images/secure-adds-ldap.PNG)  
+  ![Secure LDAP](../images/secure-adds-ldap.PNG)  
 
 * Use Apache Directory Studio
 1. Download Apache Directory Studio from https://directory.apache.org/studio/downloads.html and install.  
@@ -47,14 +47,14 @@ Pay attension to the user name, actually, we create user wlstest@yourtenant.com,
    Encryption method: Use SSL encryption  
    Click Certificate Validation and add azure-ad-ds-client.cer  
    Click Check NetWork Parameter, will success if the informations are correct.  
-   ![Secure LDAP](images/secure-adds-ldap.PNG)  
+   ![Secure LDAP](../images/secure-adds-ldap.PNG)  
 
 4. Click next  
 5. Authentication  
    Authentication Method: Simple Authentication  
    Bind DN or user: CN=WLSSecurityTest,OU=AADDC Users,DC=wls-security,DC=com  
    The CN is avaliable from Azure Potal -> Users -> click your user -> Identity-> Name  
-   ![Secure LDAP](images/user-profile.PNG)  
+   ![Secure LDAP](../images/user-profile.PNG)  
    Bind Password: the password that you reset.  
    Click check Authentication, it should pass.  
 
@@ -63,8 +63,8 @@ Take wlstest as an example:
 DistingishedName: CN=WLSSecurityTest,OU=AADDC Users,DC=wls-security,DC=com  
 Group DistingishedName: CN=AAD DC Administrators,OU=AADDC Users,DC=wls-security,DC=com  
 Base DNs for user and group are the same: OU=AADDC Users,DC=wls-security,DC=com  
-    ![Secure LDAP](images/ldap-browser.PNG)  
-    ![Secure LDAP](images/ldap-user-profile.PNG)  
+    ![Secure LDAP](../images/ldap-browser.PNG)  
+    ![Secure LDAP](../images/ldap-user-profile.PNG)  
 
    
  
