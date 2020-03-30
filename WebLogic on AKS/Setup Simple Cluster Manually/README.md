@@ -6,7 +6,7 @@ The page describe how to set up simple WebLogic cluster on ASK, we recommand run
 If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough#use-azure-cloud-shell).   
 
 ## Create AKS cluster  
-AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/). We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
+AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).  We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
 ```
 az aks create \
 --resource-group $AKS_PERS_RESOURCE_GROUP \
@@ -33,12 +33,15 @@ kubectl get nodes
 Example output:  
 
 ```
-    aks-nodepool1-58449474-vmss000000   Ready    agent   2d20h   v1.14.8
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-58449474-vmss000000   Ready    agent   2d22h   v1.14.8
+aks-nodepool1-58449474-vmss000001   Ready    agent   2d22h   v1.14.8
+aks-nodepool1-58449474-vmss000002   Ready    agent   2d22h   v1.14.8
 ```
 
 ## Create storage and set up file share  
 We will create external data volume to access and persist data. There are several options for data sharing [Storage options for applications in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/concepts-storage).  
-We will use use Azure Files as a Kubernetes volume, [learn more](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume).  
+We will use use Azure Files as a Kubernetes volume, click the link to [learn more](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume).  
 Create storage account first:  
 
 ```
@@ -49,14 +52,14 @@ az storage account create \
 --sku Standard_LRS
 ```  
 
-Create a file share  
+Create a file share. We need storage connection string to create file share, run the the command to get connection string, then create share with az storage share create.  
 
 ```
 export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv)
 
 az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
 ```
-Create a Kubernetes secret  
+Create a Kubernetes secret. We need storage key for the secret. Run az storage account keys list to query storage key and use kubectl create secret to create azure-secret.  
 ```
 STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_GROUP --account-name $AKS_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)
 
@@ -192,7 +195,7 @@ weblogic-operator-secrets                 Opaque                                
 ```
 3. Create Weblogic Domain  
 We will use create-domain.sh in weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv to create domain.
-Firstly, create a copy of create-domain-inputs and name domain1.yaml, and change the following inputs:
+Firstly, create a copy of create-domain-inputs.yaml and name domain1.yaml, change the following inputs:
 ```
 image: store/oracle/weblogic:12.2.1.3
 imagePullSecretName: regcred
@@ -276,9 +279,24 @@ kubernetes                         ClusterIP      10.0.0.1      <none>          
 ```
 Address to access admin server: http://52.188.176.103:7001/console
 ## Deploy sample application  
-## Troubleshooting  
+Go to Admin server and deploy webtestapp.war.  
+1. Go to admin server console, click "Lock & Edit"  
+2. Click Deployments  
+3. Click Install  
+4. Choose file webtestapp.war  
+6. Leave configuration as default  
+7. click finish  
+8. Activate changes  
+8. Go to Deplyments -> Control -> select testwebapp -> Start -> Servicing all requests  
 
-https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
-https://oracle.github.io/weblogic-kubernetes-operator/userguide/introduction/introduction/
-https://docs.microsoft.com/en-us/azure/aks/azure-files-volume
+After successful deployment, go to the application with domain1-cluster-1-lb external ip listed as above.  
+domain1-cluster-1-lb               LoadBalancer   10.0.112.43   104.45.176.215   8001:30874/TCP       2d17h  
+Application address is : http://104.45.176.215:8001/webtestapp  
+The test application will list the server host and server name in the page.
+## Troubleshooting  
+## Useful links
+[Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)  
+[WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-kubernetes-operator/userguide/introduction/introduction/)  
+[Manually create and use a volume with Azure Files share in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume)  
+[Create a Secret by providing credentials on the command line](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)  
 
