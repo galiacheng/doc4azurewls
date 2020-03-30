@@ -10,12 +10,19 @@ AKS is a managed Kubernetes service that lets you quickly deploy and manage clus
 ``
 az aks create --resource-group $AKS_PERS_RESOURCE_GROUP \  
 --name $AKS_CLUSTER_NAME \  
+<br />
 --vm-set-type VirtualMachineScaleSets \  
+<br />
 --node-count 3 \  
+<br />
 --generate-ssh-keys \  
+<br />
 --kubernetes-version 1.14.8 \  
+<br />
 --nodepool-name nodepool1 \  
+<br />
 --node-vm-size Standard_D4s_v3 \  
+<br />
 --location $AKS_PERS_LOCATION  
 ``
 After the deployment successes, run the fowllowing command to connect to aks instance.  
@@ -29,8 +36,11 @@ kubectl get nodes
 Example output:  
 ``
 NAME                                STATUS   ROLES   AGE     VERSION  
+<br />
 aks-nodepool1-58449474-vmss000000   Ready    agent   2d20h   v1.14.8  
+<br />
 aks-nodepool1-58449474-vmss000001   Ready    agent   2d20h   v1.14.8  
+<br />
 aks-nodepool1-58449474-vmss000002   Ready    agent   2d20h   v1.14.8  
 ``
 
