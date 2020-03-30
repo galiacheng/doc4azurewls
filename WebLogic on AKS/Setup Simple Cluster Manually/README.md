@@ -211,7 +211,7 @@ Output for successful deployment:
 ```
 ToDo
 ```
-4. Create LoadBalance for admin and cluster  
+4. Create LoadBalancer for admin and cluster  
 Create admin-lb.yaml with the following content
 ```
 apiVersion: v1
@@ -287,12 +287,17 @@ Go to Admin server and deploy webtestapp.war.
 6. Leave configuration as default  
 7. click finish  
 8. Activate changes  
-8. Go to Deplyments -> Control -> select testwebapp -> Start -> Servicing all requests  
+8. Go to Deplyments -> Control -> select webtestapp -> Start -> Servicing all requests  
 
-After successful deployment, go to the application with domain1-cluster-1-lb external ip listed as above.  
-domain1-cluster-1-lb               LoadBalancer   10.0.112.43   104.45.176.215   8001:30874/TCP       2d17h  
+After successful deployment, go to the application with domain1-cluster-1-lb external ip.  
+```
+kubectl  get svc domain1-cluster-1-lb
+
+NAME                   TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
+domain1-cluster-1-lb   LoadBalancer   10.0.112.43   104.45.176.215   8001:30874/TCP   2d18h
+```
 Application address is : http://104.45.176.215:8001/webtestapp  
-The test application will list the server host and server name in the page.
+The test application will list the server host and server ip in the page.
 ## Troubleshooting  
 ## Useful links
 [Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)  
