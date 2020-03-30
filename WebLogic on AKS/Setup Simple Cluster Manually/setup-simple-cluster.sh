@@ -19,7 +19,8 @@ az aks create --resource-group $AKS_PERS_RESOURCE_GROUP \
 --kubernetes-version 1.14.8 \
 --nodepool-name nodepool1 \
 --node-vm-size Standard_D4s_v3 \
---location $AKS_PERS_LOCATION
+--location $AKS_PERS_LOCATION \
+--enable-addons http_application_routing
 
 # Create a storage account
 az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -l $AKS_PERS_LOCATION --sku Standard_LRS
