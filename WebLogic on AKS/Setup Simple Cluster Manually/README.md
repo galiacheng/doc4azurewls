@@ -8,15 +8,15 @@ If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud 
 ## Create AKS cluster  
 AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/). We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
 ``
-az aks create --resource-group $AKS_PERS_RESOURCE_GROUP \  
---name $AKS_CLUSTER_NAME \    
---vm-set-type VirtualMachineScaleSets \    
---node-count 3 \    
---generate-ssh-keys \    
---kubernetes-version 1.14.8 \    
---nodepool-name nodepool1 \    
---node-vm-size Standard_D4s_v3 \    
---location $AKS_PERS_LOCATION  
+    az aks create --resource-group $AKS_PERS_RESOURCE_GROUP \
+    --name $AKS_CLUSTER_NAME \    
+    --vm-set-type VirtualMachineScaleSets \    
+    --node-count 3 \    
+    --generate-ssh-keys \    
+    --kubernetes-version 1.14.8 \    
+    --nodepool-name nodepool1 \    
+    --node-vm-size Standard_D4s_v3 \    
+    --location $AKS_PERS_LOCATION  
 ``
 After the deployment successes, run the fowllowing command to connect to aks instance.  
 ``
@@ -28,10 +28,10 @@ kubectl get nodes
 ``
 Example output:  
 ``
-NAME                                STATUS   ROLES   AGE     VERSION    
-aks-nodepool1-58449474-vmss000000   Ready    agent   2d20h   v1.14.8    
-aks-nodepool1-58449474-vmss000001   Ready    agent   2d20h   v1.14.8    
-aks-nodepool1-58449474-vmss000002   Ready    agent   2d20h   v1.14.8
+    NAME                                STATUS   ROLES   AGE     VERSION    
+    aks-nodepool1-58449474-vmss000000   Ready    agent   2d20h   v1.14.8    
+    aks-nodepool1-58449474-vmss000001   Ready    agent   2d20h   v1.14.8    
+    aks-nodepool1-58449474-vmss000002   Ready    agent   2d20h   v1.14.8
 ``
 
 2. Create storage and set up file share  
