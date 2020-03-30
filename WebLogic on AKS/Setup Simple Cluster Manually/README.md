@@ -38,8 +38,8 @@ Example output:
 
 ## Create storage and set up file share  
 We will create external data volume to access and persist data. There are several options for data sharing [Storage options for applications in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/concepts-storage).  
-We will use use Azure Files as a Kubernetes volume.  
-Create storage account:  
+We will use use Azure Files as a Kubernetes volume, [learn more](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume).  
+Create storage account first:  
 
 ```
 az storage account create \
@@ -110,19 +110,171 @@ kubectl apply -f pvc.yaml
 Use the command to verify:  
 
 ```
-kubectl get pv
-kubectl get pvc
+kubectl get pv,pvc
 ``` 
 Example output:  
 ```
 NAME        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM               STORAGECLASS   REASON   AGE
 azurefile   5Gi        RWX            Retain           Bound    default/azurefile   azurefile               2d21h
+
 NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      2d21h
 ```
 
 ## Install WebLogic Operator  
+Before installing WebLogic Operator, we have to grant the Helm service account the cluster-admin role by running the following command:
+```
+cat <<EOF | kubectl apply -f -
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: helm-user-cluster-admin-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: kube-system
+EOF
+```
+Install WebLogic Operator:  
+```
+helm init
+helm repo add weblogic-operator https://oracle.github.io/weblogic-kubernetes-operator/charts
+helm repo update
+
+# For Helm 3.x
+helm install weblogic-operator weblogic-operator/weblogic-operator
+```
+To verify th operator with command:
+```
+kubectl get pods -w
+```
+Output:
+```
+NAME                                              READY   STATUS      RESTARTS   AGE
+weblogic-operator-6655cdc949-x58ts                1/1     Running     0          2d21h
+```
 ## Create WebLogic Domain  
+We will use sample script in weblogic operator repo, clone the repo first.
+```
+git clone https://github.com/oracle/weblogic-kubernetes-operator
+```
+1. Create domain credentials  
+We will use create-weblogic-credentials.sh in weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials.
+```
+#cd weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials
+./create-weblogic-credentials.sh -u weblogic -p welcome1 -d domain1
+```
+2. Create Docker Credentials for pulling image.
+```
+kubectl create secret docker-registry regcred \
+--docker-server=docker.io \
+--docker-username=username \
+--docker-password=password \
+--docker-email=test@example.com
+```
+To verify secrets with command:
+```
+kubectl get secret
+```
+Output:
+```
+NAME                                      TYPE                                  DATA   AGE
+azure-secret                              Opaque                                2      2d21h
+default-token-mwdj8                       kubernetes.io/service-account-token   3      2d22h
+domain1-weblogic-credentials              Opaque                                2      2d21h
+regcred                                   kubernetes.io/dockerconfigjson        1      2d20h
+sh.helm.release.v1.weblogic-operator.v1   helm.sh/release.v1                    1      2d21h
+weblogic-operator-secrets                 Opaque                                1      2d21h
+```
+3. Create Weblogic Domain  
+We will use create-domain.sh in weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv to create domain.
+Firstly, create a copy of create-domain-inputs and name domain1.yaml, and change the following inputs:
+```
+image: store/oracle/weblogic:12.2.1.3
+imagePullSecretName: regcred
+exposeAdminNodePort: true
+persistentVolumeClaimName: azurefile
+```
+Create domain1 with command:
+```
+#cd weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv
+./create-domain.sh -i domain1.yaml -o ~/azure/output -e -v
+```
+Output for successful deployment:
+```
+ToDo
+```
+4. Create LoadBalance for admin and cluster  
+Create admin-lb.yaml with the following content
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: domain1-admin-server-external-lb
+  namespace: default
+spec:
+  ports:
+  - name: default
+    port: 7001
+    protocol: TCP
+    targetPort: 7001
+  selector:
+    weblogic.domainUID: domain1
+    weblogic.serverName: admin-server
+  sessionAffinity: None
+  type: LoadBalancer
+```
+Create admin loadbalancer.
+```
+kubectl  apply -f admin-lb.yaml
+```
+Create cluster-lb.yaml with the following content
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: domain1-cluster-1-lb
+  namespace: default
+spec:
+  ports:
+  - name: default
+    port: 8001
+    protocol: TCP
+    targetPort: 8001
+  selector:
+    weblogic.domainUID: domain1
+    weblogic.clusterName: cluster-1
+  sessionAffinity: None
+  type: LoadBalancer
+```
+Create cluster loadbalancer.
+```
+kubectl  apply -f cluster-lb.yaml
+```
+Get address of admin and managed server:
+```
+kubectl  get svc
+```
+With output:
+```
+NAME                               TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)              AGE
+domain1-admin-server               ClusterIP      None          <none>           30012/TCP,7001/TCP   2d20h
+domain1-admin-server-external      NodePort       10.0.182.50   <none>           7001:30701/TCP       2d20h
+domain1-admin-server-external-lb   LoadBalancer   10.0.67.79    52.188.176.103   7001:32227/TCP       2d20h
+domain1-cluster-1-lb               LoadBalancer   10.0.112.43   104.45.176.215   8001:30874/TCP       2d17h
+domain1-cluster-cluster-1          ClusterIP      10.0.162.19   <none>           8001/TCP             2d20h
+domain1-managed-server1            ClusterIP      None          <none>           8001/TCP             2d20h
+domain1-managed-server2            ClusterIP      None          <none>           8001/TCP             2d20h
+domain1-managed-server3            ClusterIP      None          <none>           8001/TCP             2d17h
+domain1-managed-server4            ClusterIP      None          <none>           8001/TCP             2d17h
+internal-weblogic-operator-svc     ClusterIP      10.0.192.13   <none>           8082/TCP             2d22h
+kubernetes                         ClusterIP      10.0.0.1      <none>           443/TCP              2d22h
+```
+Address to access admin server: http://52.188.176.103:7001/console
 ## Deploy sample application  
 ## Troubleshooting  
 
