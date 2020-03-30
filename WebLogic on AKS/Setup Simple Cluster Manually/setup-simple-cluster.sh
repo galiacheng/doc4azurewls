@@ -1,4 +1,4 @@
-# Change these four parameters as needed for your own environment
+# Change these parameters as needed for your own environment
 AKS_PERS_RESOURCE_GROUP=wls-aks-simple-cluster$RANDOM
 AKS_CLUSTER_NAME=WLSSimpleCluster$RANDOM
 AKS_PERS_STORAGE_ACCOUNT_NAME=wlssimplecluster$RANDOM
@@ -55,7 +55,7 @@ kubectl get pvc azurefile -o yaml
 kubectl apply -f grantHelmRole.yaml
 
 # Check pod stuats
-kubectl -n kube-system get pods -w
+kubectl -n kube-system get pods
 
 # Helm
 helm version
