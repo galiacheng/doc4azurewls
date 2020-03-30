@@ -284,7 +284,7 @@ Go to Admin server and deploy webtestapp.war.
 2. Click Deployments  
 3. Click Install  
 4. Choose file webtestapp.war  
-6. Leave configuration as default  
+6. Keep configuration as default  
 7. click finish  
 8. Activate changes  
 8. Go to Deplyments -> Control -> select webtestapp -> Start -> Servicing all requests  
