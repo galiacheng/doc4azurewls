@@ -2,6 +2,17 @@
 
 The page describe how to set up simple WebLogic cluster on ASK, we recommand running the following commands with Azure Cloud Shell, without having to install anything on your local environment.  
 
+Table of Contents
+=================
+[Start Azure Cloud Shell](#start-azure-cloud-shell)  
+[Create AKS cluster](#create-aks-cluster)  
+[Create storage and set up file share](#create-storage-and-set-up-file-share)  
+[Install WebLogic Operator](#install-weblogic-operator)  
+[Create WebLogic Domain](#create-weblogic-domain)  
+[Deploy sample application](#deploy-sample-application)  
+[Troubleshooting](#troubleshooting)  
+[Useful links](#useful-links)  
+
 ## Start Azure Cloud Shell
 If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough#use-azure-cloud-shell).   
 
