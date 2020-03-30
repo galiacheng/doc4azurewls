@@ -18,6 +18,8 @@ If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud 
 
 ## Create AKS cluster  
 AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).  We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
+Suppose you have created resource group and variable AKS_PERS_RESOURCE_GROUP for it's name, variable AKS_CLUSTER_NAME for new aks instance name, and variable AKS_PERS_LOCATION for location.
+
 ```
 az aks create \
 --resource-group $AKS_PERS_RESOURCE_GROUP \
@@ -28,6 +30,7 @@ az aks create \
 --kubernetes-version 1.14.8 \
 --nodepool-name nodepool1 \
 --node-vm-size Standard_D4s_v3 \
+--enable-addons http_application_routing \
 --location $AKS_PERS_LOCATION
 ```
 After the deployment successes, run the fowllowing command to connect to aks instance.  
@@ -53,7 +56,7 @@ aks-nodepool1-58449474-vmss000002   Ready    agent   2d22h   v1.14.8
 ## Create storage and set up file share  
 We will create external data volume to access and persist data. There are several options for data sharing [Storage options for applications in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/concepts-storage).  
 We will use use Azure Files as a Kubernetes volume, click the link to [learn more](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume).  
-Create storage account first:  
+Create storage account first, AKS_PERS_STORAGE_ACCOUNT_NAME is variable for account name:  
 
 ```
 az storage account create \
@@ -76,7 +79,7 @@ STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_G
 
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
-Mount the file share as a volume, create a file name pv.yaml, keey share name and secret name same with above setting.  
+Mount the file share as a volume, create a file name pv.yaml, keep share name and secret name the same with above settings.  
 ```
 apiVersion: v1
 kind: PersistentVolume
@@ -155,14 +158,21 @@ EOF
 ```
 Install WebLogic Operator:  
 ```
+# get helm version
+helm version
+
+# For helm 2.x
 helm init
 helm repo add weblogic-operator https://oracle.github.io/weblogic-kubernetes-operator/charts
 helm repo update
+helm install weblogic-operator/weblogic-operator --name weblogic-operator
 
 # For Helm 3.x
+helm repo add weblogic-operator https://oracle.github.io/weblogic-kubernetes-operator/charts
+helm repo update
 helm install weblogic-operator weblogic-operator/weblogic-operator
 ```
-To verify th operator with command:
+To verify the operator with command, status should be running.
 ```
 kubectl get pods -w
 ```
