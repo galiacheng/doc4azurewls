@@ -8,7 +8,16 @@ If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud 
 ## Create AKS cluster  
 AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/). We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
 ```
-az aks create --resource-group $AKS_PERS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME --vm-set-type VirtualMachineScaleSets --node-count 3 --generate-ssh-keys --kubernetes-version 1.14.8 --nodepool-name nodepool1 --node-vm-size Standard_D4s_v3 --location $AKS_PERS_LOCATION
+az aks create \
+--resource-group $AKS_PERS_RESOURCE_GROUP \
+--name $AKS_CLUSTER_NAME \
+--vm-set-type VirtualMachineScaleSets \
+--node-count 3 \
+--generate-ssh-keys \
+--kubernetes-version 1.14.8 \
+--nodepool-name nodepool1 \
+--node-vm-size Standard_D4s_v3 \
+--location $AKS_PERS_LOCATION
 ```
 After the deployment successes, run the fowllowing command to connect to aks instance.  
 ```
@@ -33,7 +42,11 @@ We will use use Azure Files as a Kubernetes volume.
 Create storage account:  
 
 ```
-az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -l $AKS_PERS_LOCATION --sku Standard_LRS
+az storage account create \
+-n $AKS_PERS_STORAGE_ACCOUNT_NAME \
+-g $AKS_PERS_RESOURCE_GROUP \
+-l $AKS_PERS_LOCATION \
+--sku Standard_LRS
 ```  
 
 Create a file share  
@@ -91,14 +104,15 @@ spec:
 Use the kubectl command to create the pod.  
 ```
 kubectl apply -f pv.yaml
-
 kubectl apply -f pvc.yaml
 ```
+
 Use the command to verify:  
+
 ```
 kubectl get pv
 kubectl get pvc
-`` 
+``` 
 Example output:  
 ```
 NAME        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM               STORAGECLASS   REASON   AGE
