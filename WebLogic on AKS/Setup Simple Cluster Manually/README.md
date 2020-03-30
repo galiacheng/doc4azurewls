@@ -220,7 +220,83 @@ Create domain1 with command:
 ```
 Output for successful deployment:
 ```
-ToDo
+NAME: weblogic-operator
+LAST DEPLOYED: Mon Mar 30 10:29:58 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+fatal: destination path 'weblogic-kubernetes-operator' already exists and is not an empty directory.
+secret/domain1-weblogic-credentials created
+secret/domain1-weblogic-credentials labeled
+The secret domain1-weblogic-credentials has been successfully created in the default namespace.
+secret/regcred created
+Input parameters being used
+export version="create-weblogic-sample-domain-inputs-v1"
+export adminPort="7001"
+export adminServerName="admin-server"
+export domainUID="domain1"
+export domainHome="/shared/domains/domain1"
+export serverStartPolicy="IF_NEEDED"
+export clusterName="cluster-1"
+export configuredManagedServerCount="5"
+export initialManagedServerReplicas="2"
+export managedServerNameBase="managed-server"
+export managedServerPort="8001"
+export image="store/oracle/weblogic:12.2.1.3"
+export imagePullPolicy="IfNotPresent"
+export imagePullSecretName="regcred"
+export productionModeEnabled="true"
+export weblogicCredentialsSecretName="domain1-weblogic-credentials"
+export includeServerOutInPodLog="true"
+export logHome="/shared/logs/domain1"
+export t3ChannelPort="30012"
+export exposeAdminT3Channel="false"
+export adminNodePort="30701"
+export exposeAdminNodePort="true"
+export namespace="default"
+javaOptions=-Dweblogic.StdoutDebugEnabled=false
+export persistentVolumeClaimName="azurefile"
+export domainPVMountPath="/shared"
+export createDomainScriptsMountPath="/u01/weblogic"
+export createDomainScriptName="create-domain-job.sh"
+export createDomainFilesDir="wlst"
+export istioEnabled="false"
+export istioReadinessPort="8888"
+
+Generating /home/haixia/azure/output/weblogic-domains/domain1/create-domain-job.yaml
+Generating /home/haixia/azure/output/weblogic-domains/domain1/delete-domain-job.yaml
+Generating /home/haixia/azure/output/weblogic-domains/domain1/domain.yaml
+Checking to see if the secret domain1-weblogic-credentials exists in namespace default
+Checking if the persistent volume claim azurefile in NameSpace default exists
+The persistent volume claim azurefile already exists in NameSpace default
+configmap/domain1-create-weblogic-sample-domain-job-cm created
+Checking the configmap domain1-create-weblogic-sample-domain-job-cm was created
+configmap/domain1-create-weblogic-sample-domain-job-cm labeled
+Checking if object type job with name domain1-create-weblogic-sample-domain-job exists
+No resources found in default namespace.
+Creating the domain by creating the job /home/haixia/azure/output/weblogic-domains/domain1/create-domain-job.yaml
+job.batch/domain1-create-weblogic-sample-domain-job created
+Waiting for the job to complete...
+Error from server (BadRequest): container "create-weblogic-sample-domain-job" in pod "domain1-create-weblogic-sample-domain-job-p5htr" is waiting to start: PodInitializing
+status on iteration 1 of 20
+pod domain1-create-weblogic-sample-domain-job-p5htr status is Init:0/1
+Error from server (BadRequest): container "create-weblogic-sample-domain-job" in pod "domain1-create-weblogic-sample-domain-job-p5htr" is waiting to start: PodInitializing
+status on iteration 2 of 20
+pod domain1-create-weblogic-sample-domain-job-p5htr status is Init:0/1
+status on iteration 3 of 20
+pod domain1-create-weblogic-sample-domain-job-p5htr status is Completed
+domain.weblogic.oracle/domain1 created
+
+Domain domain1 was created and will be started by the WebLogic Kubernetes Operator
+
+Administration console access is available at http://wlssimplec-wls-aks-simple-c-685ba0-35aaf494.hcp.eastus.azmk8s.io:30701/console
+The following files were generated:
+  /home/haixia/azure/output/weblogic-domains/domain1/create-domain-inputs.yaml
+  /home/haixia/azure/output/weblogic-domains/domain1/create-domain-job.yaml
+  /home/haixia/azure/output/weblogic-domains/domain1/domain.yaml
+
+Completed
 ```
 4. Create LoadBalancer for admin and cluster  
 Create admin-lb.yaml with the following content
