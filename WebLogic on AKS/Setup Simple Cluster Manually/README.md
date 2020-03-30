@@ -1,12 +1,13 @@
-The page describe how to set up simple WebLogic cluster on ASK, we will recommand you to run the following commands with Azure Cloud Shell.  
+# Set up simple WebLogic cluster on AKS manually
 
-1. Start Azure Cloud Shell
+The page describe how to set up simple WebLogic cluster on ASK, we recommand running the following commands with Azure Cloud Shell, without having to install anything on your local environment.  
+
+## Start Azure Cloud Shell
 If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough#use-azure-cloud-shell).   
 
-1. Create AKS cluster  
+## Create AKS cluster  
 AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/). We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
 ``
-# Create aks cluster
 az aks create --resource-group $AKS_PERS_RESOURCE_GROUP \
 --name $AKS_CLUSTER_NAME \
 --vm-set-type VirtualMachineScaleSets \
