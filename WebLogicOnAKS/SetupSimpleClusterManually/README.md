@@ -9,6 +9,7 @@ Table of Contents
 [Create storage and set up file share](#create-storage-and-set-up-file-share)  
 [Install WebLogic Operator](#install-weblogic-operator)  
 [Create WebLogic Domain](#create-weblogic-domain)  
+[Automation](#automation)
 [Deploy sample application](#deploy-sample-application)  
 [Troubleshooting](#troubleshooting)  
 [Useful links](#useful-links)  
@@ -375,6 +376,29 @@ internal-weblogic-operator-svc     ClusterIP      10.0.192.13   <none>          
 kubernetes                         ClusterIP      10.0.0.1      <none>           443/TCP              2d22h
 ```
 Address to access admin server: http://52.188.176.103:7001/console
+## Automation  
+If you want automation for above steps, please clone this repo to your machine and run [setup-simple-cluster.sh](setup-simple-cluster.sh).  
+Before running the script, you have to change the following information to make sure it runs correctly.  
+```
+# 1. Value of variables: 
+#   AKS_PERS_RESOURCE_GROUP
+#   AKS_CLUSTER_NAME
+#   AKS_PERS_STORAGE_ACCOUNT_NAME
+#   AKS_PERS_LOCATION
+#   AKS_PERS_SHARE_NAME
+# 2. Docker account, search the command and replace username, password, test@example.com with your docker account.
+# kubectl create secret docker-registry regcred \
+# --docker-server=docker.io \
+# --docker-username=username \
+# --docker-password=password \
+# --docker-email=test@example.com
+
+```
+Save your changes and run the script, it will print server ip address after successful deployment.  
+You can also get the server information with the command:
+```
+kubectl  get svc
+```
 ## Deploy sample application  
 Go to Admin server and deploy webtestapp.war.  
 1. Go to admin server console, click "Lock & Edit"  
