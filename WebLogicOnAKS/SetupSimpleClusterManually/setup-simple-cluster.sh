@@ -68,7 +68,7 @@ function createFileShare()
 function installWebLogicOperator()
 {
     # Grant the Helm service account the cluster-admin role
-    kubectl apply -f ${SCRIPT_PWD}/grantHelmRole.yaml
+    kubectl apply -f ${SCRIPT_PWD}/grant-helm-role.yaml
 
     # Print pod stuats
     kubectl -n kube-system get pods
