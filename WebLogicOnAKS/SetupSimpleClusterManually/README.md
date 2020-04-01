@@ -93,7 +93,7 @@ spec:
     - ReadWriteMany
   storageClassName: azurefile
   azureFile:
-    secretName: azure-secrea
+    secretName: azure-secret
     shareName: weblogic
     readOnly: false
   mountOptions:
