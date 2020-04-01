@@ -92,7 +92,7 @@ STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_G
 
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
-Mount the file share as a volume, create a file name pv.yaml, keep share name (weblogic in this example) and secret name (azure-secret in this example) the same with above settings.  
+Mount the file share as a volume, create file pv.yaml with the following content, keep share name (weblogic in this example) and secret name (azure-secret in this example) the same with above settings.  
 ```
 apiVersion: v1
 kind: PersistentVolume
@@ -116,7 +116,7 @@ spec:
   - mfsymlinks
   - nobrl
 ```
-Create a file name pvc.yaml for PersistentVolumeClaim.  
+Create file pvc.yaml with the following content for PersistentVolumeClaim.  
 ```
 apiVersion: v1
 kind: PersistentVolumeClaim
