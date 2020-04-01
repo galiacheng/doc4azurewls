@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 #Function to output message to StdErr
 function echo_stderr()
 {
