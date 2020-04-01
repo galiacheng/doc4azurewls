@@ -442,7 +442,7 @@ WebLogic Server logs are listed in the folder.
 ![WebLogic Logs](pictures/screenshot-logs.PNG)  
 
 ## Troubleshooting  
-1. Get error details of pod
+### Get error details of pod
 If you get the following message while createing weblogic domain, the job is failed.  
 ```
 status on iteration 20 of 20
@@ -466,6 +466,26 @@ Events:
   Warning  FailedMount  119s                 kubelet, aks-nodepool1-58449474-vmss000001  Unable to mount volumes for pod "domain1-create-weblogic-sample-domain-job-qqv6k_default(15706980-73cb-11ea-b804-b2c91b494b00)": timeout expired waiting for volumes to attach or mount for pod "default"/"domain1-create-weblogic-sample-domain-job-qqv6k". list of unmounted volumes=[weblogic-sample-domain-storage-volume]. list of unattached volumes=[create-weblogic-sample-domain-job-cm-volume weblogic-sample-domain-storage-volume weblogic-credentials-volume default-token-zr7bq]
   Warning  FailedMount  114s (x9 over 4m2s)  kubelet, aks-nodepool1-58449474-vmss000001  MountVolume.SetUp failed for volume "azurefile" : Couldn't get secret default/azure-secrea
   ```
+### Fail to access Admin Console  
+  There are different cases for Admin Console failure.  
+  * Create weblogic domain job fails  
+  You can check deloy log and find the failure details with kubectl describe pod podname as  
+
+  * Process of start Admin Server is still running.  
+  Check with kubectl  get svc and if domain1-admin-server is not listed, we need to wait some seconds for Admin Server start up.  
+  The following output is an example that Admin Server starts.  
+```
+NAME                               TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)              AGE
+domain1-admin-server               ClusterIP      None          <none>          30012/TCP,7001/TCP   7m3s
+domain1-admin-server-external      NodePort       10.0.78.211   <none>          7001:30701/TCP       7m3s
+domain1-admin-server-external-lb   LoadBalancer   10.0.6.144    40.71.233.81    7001:32758/TCP       7m32s
+domain1-cluster-1-lb               LoadBalancer   10.0.29.231   52.142.39.152   8001:31022/TCP       7m30s
+domain1-cluster-cluster-1          ClusterIP      10.0.80.134   <none>          8001/TCP             1s
+domain1-managed-server1            ClusterIP      None          <none>          8001/TCP             1s
+domain1-managed-server2            ClusterIP      None          <none>          8001/TCP             1s
+internal-weblogic-operator-svc     ClusterIP      10.0.1.23     <none>          8082/TCP             9m59s
+kubernetes                         ClusterIP      10.0.0.1      <none>          443/TCP              16m
+```
 ## Useful links
 [Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)  
 [WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-kubernetes-operator/userguide/introduction/introduction/)  
