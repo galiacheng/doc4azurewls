@@ -1,3 +1,20 @@
+#!/bin/sh
+# Before running the script, please change the following variables with your information.
+# 1. Value of variables: 
+#   AKS_PERS_RESOURCE_GROUP
+#   AKS_CLUSTER_NAME
+#   AKS_PERS_STORAGE_ACCOUNT_NAME
+#   AKS_PERS_LOCATION
+#   AKS_PERS_SHARE_NAME
+# 2. Docker account information, search the command and input your username, password, email.
+# kubectl create secret docker-registry regcred \
+# --docker-server=docker.io \
+# --docker-username=username \
+# --docker-password=password \
+# --docker-email=test@example.com
+
+export SCRIPT_PWD=`pwd`
+
 # Change these parameters as needed for your own environment
 AKS_PERS_RESOURCE_GROUP=wls-aks-simple-cluster$RANDOM
 AKS_CLUSTER_NAME=WLSSimpleCluster$RANDOM
@@ -10,7 +27,7 @@ echo $AKS_PERS_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_PERS_STORAGE_ACCOUNT_NAME
 # Create a resource group
 az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 
-# Create aks cluster
+# Create aks cluster, please change parameters as you expected
 az aks create --resource-group $AKS_PERS_RESOURCE_GROUP \
 --name $AKS_CLUSTER_NAME \
 --vm-set-type VirtualMachineScaleSets \
@@ -47,32 +64,38 @@ kubectl create secret generic azure-secret \
 --from-literal=azurestorageaccountkey=$STORAGE_KEY
 
 # Mount the file share as a volume
-kubectl apply -f pv.yaml
+kubectl apply -f ${SCRIPT_PWD}/pv.yaml
 kubectl get pv azurefile -o yaml
-kubectl apply -f pvc.yaml
+kubectl apply -f ${SCRIPT_PWD}/pvc.yaml
 kubectl get pvc azurefile -o yaml
 
 # Grant the Helm service account the cluster-admin role
-kubectl apply -f grantHelmRole.yaml
+kubectl apply -f ${SCRIPT_PWD}/grantHelmRole.yaml
 
-# Check pod stuats
+# Print pod stuats
 kubectl -n kube-system get pods
 
 # Helm
-helm version
-helm init
-helm repo add weblogic-operator https://oracle.github.io/weblogic-kubernetes-operator/charts
-helm repo update
+helmVersion=$(echo `helm version` | grep -Po '(?<=Version:\"v)\d')
+if [ $helmVersion -lt 3 ]
+then 
+    helm init
+    helm repo add weblogic-operator https://oracle.github.io/weblogic-kubernetes-operator/charts
+    helm repo update
+    helm install weblogic-operator/weblogic-operator --name weblogic-operator
+else
+    # For Helm 3.x
+    helm repo add weblogic-operator https://oracle.github.io/weblogic-kubernetes-operator/charts
+    helm repo update
+    helm install weblogic-operator weblogic-operator/weblogic-operator
+fi
 
-# For Helm 3.x
-helm install weblogic-operator weblogic-operator/weblogic-operator
-
-# Create WebLogic Domain Credentials
+# Create WebLogic Domain Credentials, please change weblogic username, password, domain name as you expected.
 git clone https://github.com/oracle/weblogic-kubernetes-operator
 cd weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials
 ./create-weblogic-credentials.sh -u weblogic -p welcome1 -d domain1
 
-# Create Docker Credentials
+# Create Docker Credentials, please change to your docker account.
 kubectl create secret docker-registry regcred \
 --docker-server=docker.io \
 --docker-username=username \
@@ -81,10 +104,10 @@ kubectl create secret docker-registry regcred \
 
 # Create Weblogic Domain
 cd ../create-weblogic-domain/domain-home-on-pv
-./create-domain.sh -i domain1.yaml -o ~/azure/output -e -v
+./create-domain.sh -i ${SCRIPT_PWD}/domain1.yaml -o ~/azure/output -e -v
 
-kubectl  apply -f admin-lb.yaml
-kubectl  get svc
+kubectl  apply -f ${SCRIPT_PWD}/admin-lb.yaml
+kubectl  apply -f ${SCRIPT_PWD}/cluster-lb.yaml
 
-kubectl  apply -f cluster-lb.yaml
+# Print ip address
 kubectl  get svc
