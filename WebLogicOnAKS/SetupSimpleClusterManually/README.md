@@ -11,7 +11,7 @@ Table of Contents
 [Create WebLogic Domain](#create-weblogic-domain)  
 [Automation](#automation)  
 [Deploy sample application](#deploy-sample-application)  
-[Access WebLogic logs](#accesswebLogic-logs)  
+[Access WebLogic logs](#access-weblogic-logs)  
 [Troubleshooting](#troubleshooting)  
 [Useful links](#useful-links)  
 
