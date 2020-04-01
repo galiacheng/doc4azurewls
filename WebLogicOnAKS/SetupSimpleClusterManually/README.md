@@ -378,24 +378,13 @@ kubernetes                         ClusterIP      10.0.0.1      <none>          
 Address to access admin server: http://52.188.176.103:7001/console
 ## Automation  
 If you want automation for above steps, please clone this repo to your machine and run [setup-simple-cluster.sh](setup-simple-cluster.sh).  
-Before running the script, you have to change the following information to make sure it runs correctly.  
+The script will create resource group, AKS instance with 3 nodes, storage account, create file share, and set up weblogic 
 ```
-# 1. Value of variables: 
-#   AKS_PERS_RESOURCE_GROUP
-#   AKS_CLUSTER_NAME
-#   AKS_PERS_STORAGE_ACCOUNT_NAME
-#   AKS_PERS_LOCATION
-#   AKS_PERS_SHARE_NAME
-# 2. Docker account, search the command and replace username, password, test@example.com with your docker account.
-# kubectl create secret docker-registry regcred \
-# --docker-server=docker.io \
-# --docker-username=username \
-# --docker-password=password \
-# --docker-email=test@example.com
+./setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-emai
 
 ```
-Save your changes and run the script, it will print server ip address after successful deployment.  
-You can also get the server information with the command:
+It will print server ip address after successful deployment.  
+If the external ip status if pending, you can also get the server information with the command:
 ```
 kubectl  get svc
 ```
