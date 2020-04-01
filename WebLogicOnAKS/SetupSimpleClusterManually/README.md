@@ -24,7 +24,7 @@ We will diables http-appliaction-routing by default, if you want to enable http_
 
 
 ```
-# Change these four parameters as needed for your own environment
+# Change these parameters as needed for your own environment
 AKS_CLUSTER_NAME=WLSSimpleCluster
 AKS_PERS_RESOURCE_GROUP=wls-simple-cluster
 AKS_PERS_LOCATION=eastus
