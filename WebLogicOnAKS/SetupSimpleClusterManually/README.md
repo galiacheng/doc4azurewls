@@ -20,7 +20,7 @@ If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud 
 
 ## Create AKS cluster  
 AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).  We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
-We will diables http-appliaction-routing by default, if you want to enable http_application_routing, please follow [HTTP application routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing)
+We will disable http-appliaction-routing by default, if you want to enable http_application_routing, please follow [HTTP application routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing)
 
 
 ```
