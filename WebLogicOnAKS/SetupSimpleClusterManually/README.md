@@ -380,7 +380,7 @@ Address to access admin server: http://52.188.176.103:7001/console
 If you want automation for above steps, please clone this repo to your machine and run [setup-simple-cluster.sh](setup-simple-cluster.sh).  
 The script will create resource group, AKS instance with 3 nodes, storage account, create file share, and set up weblogic 
 ```
-./setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-emai
+bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-emai
 
 ```
 It will print server ip address after successful deployment.  
@@ -409,6 +409,21 @@ domain1-cluster-1-lb   LoadBalancer   10.0.112.43   104.45.176.215   8001:30874/
 Application address is : http://104.45.176.215:8001/webtestapp  
 The test application will list the server host and server ip in the page.
 ## Troubleshooting  
+1. Get error detail of pod
+If you get the following massage while createing weblogic domain, the job is failed.  
+```
+status on iteration 20 of 20
+pod domain1-create-weblogic-sample-domain-job-nj7wl status is Init:0/1
+The create domain job is not showing status completed after waiting 300 seconds.
+Check the log output for errors.
+Error from server (BadRequest): container "create-weblogic-sample-domain-job" in pod "domain1-create-weblogic-sample-domain-job-nj7wl" is waiting to start: PodInitializing
+[ERROR] Exiting due to failure - the job status is not Completed!
+```
+You can get detail error message by running 
+```
+# replace domain1-create-weblogic-sample-domain-job-nj7wl with your pod name
+kubectl describe pod domain1-create-weblogic-sample-domain-job-nj7wl
+```
 ## Useful links
 [Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)  
 [WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-kubernetes-operator/userguide/introduction/introduction/)  
