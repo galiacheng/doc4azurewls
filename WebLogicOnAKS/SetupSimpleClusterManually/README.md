@@ -372,8 +372,6 @@ domain1-cluster-1-lb               LoadBalancer   10.0.112.43   104.45.176.215  
 domain1-cluster-cluster-1          ClusterIP      10.0.162.19   <none>           8001/TCP             2d20h
 domain1-managed-server1            ClusterIP      None          <none>           8001/TCP             2d20h
 domain1-managed-server2            ClusterIP      None          <none>           8001/TCP             2d20h
-domain1-managed-server3            ClusterIP      None          <none>           8001/TCP             2d17h
-domain1-managed-server4            ClusterIP      None          <none>           8001/TCP             2d17h
 internal-weblogic-operator-svc     ClusterIP      10.0.192.13   <none>           8082/TCP             2d22h
 kubernetes                         ClusterIP      10.0.0.1      <none>           443/TCP              2d22h
 ```
@@ -395,11 +393,19 @@ Go to Admin server and deploy webtestapp.war.
 1. Go to admin server console, click "Lock & Edit"  
 2. Click Deployments  
 3. Click Install  
-4. Choose file webtestapp.war  
-6. Keep configuration as default  
-7. click finish  
-8. Activate changes  
-8. Go to Deplyments -> Control -> select webtestapp -> Start -> Servicing all requests  
+4. Select file webtestapp.war  
+5. Next. Install this deployment as an application  
+6. Next. Select cluster-1 and All servers in the cluster  
+7. Keep configuration as default and click Finish
+8. Activate Changes  
+![Deploy Application](pictures/screenshot-deploy-test-app.PNG)  
+
+Start deployment:  
+1. Go to Deplyments  
+2. Click Control  
+3. select webtestapp  
+4. Start  
+5. Servicing all requests  
 
 After successful deployment, go to the application with domain1-cluster-1-lb external ip.  
 ```
