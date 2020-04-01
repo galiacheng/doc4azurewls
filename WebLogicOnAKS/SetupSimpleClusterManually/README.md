@@ -201,7 +201,7 @@ We will use sample script in weblogic operator repository, clone the repository 
 git clone https://github.com/oracle/weblogic-kubernetes-operator
 ```
 1. Create domain credentials  
-We will use create-weblogic-credentials.sh in weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials.
+We will use create-weblogic-credentials.sh in weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials to create domain credentials.
 ```
 #cd weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials
 ./create-weblogic-credentials.sh -u weblogic -p welcome1 -d domain1
