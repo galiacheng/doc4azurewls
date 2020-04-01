@@ -20,11 +20,15 @@ If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud 
 
 ## Create AKS cluster  
 AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).  We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
-Suppose you have created resource group. You have created variable AKS_PERS_RESOURCE_GROUP for resource group, variable AKS_CLUSTER_NAME for new aks cluster, and variable AKS_PERS_LOCATION for location.  
 We will diables http-appliaction-routing by default, if you want to enable http_application_routing, please follow [HTTP application routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing)
 
 
 ```
+# Change these four parameters as needed for your own environment
+AKS_CLUSTER_NAME=WLSSimpleCluster
+AKS_PERS_RESOURCE_GROUP=wls-simple-cluster
+AKS_PERS_LOCATION=eastus
+
 az aks create \
 --resource-group $AKS_PERS_RESOURCE_GROUP \
 --name $AKS_CLUSTER_NAME \
@@ -36,7 +40,7 @@ az aks create \
 --node-vm-size Standard_D4s_v3 \
 --location $AKS_PERS_LOCATION
 ```
-After the deployment successes, run the fowllowing command to connect to aks instance.  
+After the deployment finishes, run the fowllowing command to connect to aks cluster.  
 ```
 az aks get-credentials --resource-group $AKS_PERS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME
 ```
@@ -59,9 +63,12 @@ aks-nodepool1-58449474-vmss000002   Ready    agent   2d22h   v1.14.8
 ## Create storage and set up file share  
 We will create external data volume to access and persist data. There are several options for data sharing [Storage options for applications in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/concepts-storage).  
 We will use use Azure Files as a Kubernetes volume, click the link to [learn more](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume).  
-Create storage account first, AKS_PERS_STORAGE_ACCOUNT_NAME is variable for account name:  
+Create storage account first, AKS_PERS_STORAGE_ACCOUNT_NAME is variable of account name:  
 
 ```
+# Change the value as needed for your own environment
+AKS_PERS_STORAGE_ACCOUNT_NAME=wlssimpleclusterstorageaccount
+
 az storage account create \
 -n $AKS_PERS_STORAGE_ACCOUNT_NAME \
 -g $AKS_PERS_RESOURCE_GROUP \
@@ -72,6 +79,9 @@ az storage account create \
 Create a file share. We need storage connection string to create file share, run the the command to get connection string, then create share with az storage share create.  
 
 ```
+# Change value as needed for your own environment
+AKS_PERS_SHARE_NAME=weblogic
+
 export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv)
 
 az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
@@ -82,7 +92,7 @@ STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_G
 
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
-Mount the file share as a volume, create a file name pv.yaml, keep share name and secret name the same with above settings.  
+Mount the file share as a volume, create a file name pv.yaml, keep share name (weblogic in this example) and secret name (azure-secret in this example) the same with above settings.  
 ```
 apiVersion: v1
 kind: PersistentVolume
@@ -142,7 +152,7 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      2d21h
 ```
 
 ## Install WebLogic Operator  
-Before installing WebLogic Operator, we have to grant the Helm service account the cluster-admin role by running the following command:
+Before installing WebLogic Operator, we have to grant the Helm service account with the cluster-admin role by running the following command:
 ```
 cat <<EOF | kubectl apply -f -
 apiVersion: rbac.authorization.k8s.io/v1
@@ -185,7 +195,7 @@ NAME                                              READY   STATUS      RESTARTS  
 weblogic-operator-6655cdc949-x58ts                1/1     Running     0          2d21h
 ```
 ## Create WebLogic Domain  
-We will use sample script in weblogic operator repo, clone the repo first.
+We will use sample script in weblogic operator repository, clone the repository first.
 ```
 git clone https://github.com/oracle/weblogic-kubernetes-operator
 ```
@@ -231,7 +241,7 @@ Create domain1 with command:
 #cd weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv
 ./create-domain.sh -i domain1.yaml -o ~/azure/output -e -v
 ```
-Output for successful deployment:
+The following example output shows weblogic domain is created successfully.  
 ```
 NAME: weblogic-operator
 LAST DEPLOYED: Mon Mar 30 10:29:58 2020
