@@ -9,7 +9,7 @@ Table of Contents
 [Create storage and set up file share](#create-storage-and-set-up-file-share)  
 [Install WebLogic Operator](#install-weblogic-operator)  
 [Create WebLogic Domain](#create-weblogic-domain)  
-[Automation](#automation)
+[Automation](#automation)  
 [Deploy sample application](#deploy-sample-application)  
 [Troubleshooting](#troubleshooting)  
 [Useful links](#useful-links)  
