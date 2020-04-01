@@ -152,7 +152,8 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      2d21h
 ```
 
 ## Install WebLogic Operator  
-Before installing WebLogic Operator, we have to grant the Helm service account with the cluster-admin role by running the following command:
+WebLogic Operator is an adapter to integrate WebLogic Server and Kubernetes, allowing Kubernetes to serve as a container infrastructure hosting WebLogic Server instances.  We will use Helm to manage Kubernetes applications.  
+Before installing WebLogic Operator, we have to grant the Helm service account with the cluster-admin role with the following command.  
 ```
 cat <<EOF | kubectl apply -f -
 apiVersion: rbac.authorization.k8s.io/v1
@@ -169,7 +170,7 @@ subjects:
   namespace: kube-system
 EOF
 ```
-Install WebLogic Operator:  
+Install WebLogic Operator, The operator’s Helm chart is located in the kubernetes/charts/weblogic-operator directory.    
 ```
 # get helm version
 helm version
