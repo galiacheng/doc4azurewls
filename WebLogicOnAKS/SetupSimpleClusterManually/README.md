@@ -11,6 +11,7 @@ Table of Contents
 [Create WebLogic Domain](#create-weblogic-domain)  
 [Automation](#automation)  
 [Deploy sample application](#deploy-sample-application)  
+[Access WebLogic logs](#accesswebLogic-logs)  
 [Troubleshooting](#troubleshooting)  
 [Useful links](#useful-links)  
 
@@ -409,6 +410,20 @@ domain1-cluster-1-lb   LoadBalancer   10.0.112.43   104.45.176.215   8001:30874/
 ```
 Application address is : http://104.45.176.215:8001/webtestapp  
 The test application will list the server host and server ip in the page.
+
+## Access WebLogic logs
+Logs are store in azure file share, following the steps to access log:  
+1. Go to Azure portal https://ms.portal.azure.com  
+2. Go to your resource group  
+3. Open the storage account  
+4. Go to file service  
+5. Click file share  
+6. Click file share name(e.g. weblogic in this example)  
+7. Click logs  
+8. Click domain1  
+WebLogic Server logs are listed in the folder.  
+![WebLogic Logs](pictures/screenshot-logs.PNG)  
+
 ## Troubleshooting  
 1. Get error details of pod
 If you get the following message while createing weblogic domain, the job is failed.  
