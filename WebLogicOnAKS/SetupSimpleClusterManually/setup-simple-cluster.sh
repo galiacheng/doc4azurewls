@@ -29,8 +29,7 @@ function createAndConnectToAKSCluster()
     --kubernetes-version 1.14.8 \
     --nodepool-name nodepool1 \
     --node-vm-size Standard_D4s_v3 \
-    --location $AKS_PERS_LOCATION \
-    --enable-addons http_application_routing
+    --location $AKS_PERS_LOCATION
 
     # Connect to AKS cluster
     az aks get-credentials --resource-group $AKS_PERS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME

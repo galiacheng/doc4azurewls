@@ -19,7 +19,9 @@ If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud 
 
 ## Create AKS cluster  
 AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).  We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
-Suppose you have created resource group and variable AKS_PERS_RESOURCE_GROUP for it's name, variable AKS_CLUSTER_NAME for new aks instance name, and variable AKS_PERS_LOCATION for location.
+Suppose you have created resource group. You have created variable AKS_PERS_RESOURCE_GROUP for resource group, variable AKS_CLUSTER_NAME for new aks cluster, and variable AKS_PERS_LOCATION for location.  
+We will diables http-appliaction-routing by default, if you want to enable http_application_routing, please follow [HTTP application routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing)
+
 
 ```
 az aks create \
@@ -31,7 +33,6 @@ az aks create \
 --kubernetes-version 1.14.8 \
 --nodepool-name nodepool1 \
 --node-vm-size Standard_D4s_v3 \
---enable-addons http_application_routing \
 --location $AKS_PERS_LOCATION
 ```
 After the deployment successes, run the fowllowing command to connect to aks instance.  
@@ -409,8 +410,8 @@ domain1-cluster-1-lb   LoadBalancer   10.0.112.43   104.45.176.215   8001:30874/
 Application address is : http://104.45.176.215:8001/webtestapp  
 The test application will list the server host and server ip in the page.
 ## Troubleshooting  
-1. Get error detail of pod
-If you get the following massage while createing weblogic domain, the job is failed.  
+1. Get error details of pod
+If you get the following message while createing weblogic domain, the job is failed.  
 ```
 status on iteration 20 of 20
 pod domain1-create-weblogic-sample-domain-job-nj7wl status is Init:0/1
@@ -424,6 +425,15 @@ You can get detail error message by running
 # replace domain1-create-weblogic-sample-domain-job-nj7wl with your pod name
 kubectl describe pod domain1-create-weblogic-sample-domain-job-nj7wl
 ```
+Error example:
+```
+Events:
+  Type     Reason       Age                  From                                        Message
+  ----     ------       ----                 ----                                        -------
+  Normal   Scheduled    4m2s                 default-scheduler                           Successfully assigned default/domain1-create-weblogic-sample-domain-job-qqv6k to aks-nodepool1-58449474-vmss000001
+  Warning  FailedMount  119s                 kubelet, aks-nodepool1-58449474-vmss000001  Unable to mount volumes for pod "domain1-create-weblogic-sample-domain-job-qqv6k_default(15706980-73cb-11ea-b804-b2c91b494b00)": timeout expired waiting for volumes to attach or mount for pod "default"/"domain1-create-weblogic-sample-domain-job-qqv6k". list of unmounted volumes=[weblogic-sample-domain-storage-volume]. list of unattached volumes=[create-weblogic-sample-domain-job-cm-volume weblogic-sample-domain-storage-volume weblogic-credentials-volume default-token-zr7bq]
+  Warning  FailedMount  114s (x9 over 4m2s)  kubelet, aks-nodepool1-58449474-vmss000001  MountVolume.SetUp failed for volume "azurefile" : Couldn't get secret default/azure-secrea
+  ```
 ## Useful links
 [Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)  
 [WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-kubernetes-operator/userguide/introduction/introduction/)  
