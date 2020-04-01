@@ -443,7 +443,7 @@ WebLogic Server logs are listed in the folder.
 ![WebLogic Logs](pictures/screenshot-logs.PNG)  
 
 ## Troubleshooting  
-1. Get pod error details
+1. Get pod error details  
 If you get the following message while createing weblogic domain, the job is failed.  
 ```
 status on iteration 20 of 20
