@@ -206,6 +206,7 @@ We will use create-weblogic-credentials.sh in weblogic-kubernetes-operator/kuber
 ./create-weblogic-credentials.sh -u weblogic -p welcome1 -d domain1
 ```
 2. Create Docker Credentials for pulling image, please change docker-username, docker-password, docker-email to your account.
+If you don't have a docker account, please sign up in [docker hub](https://www.docker.com/), then checkout [Oracle WebLogic Server](https://hub.docker.com/_/oracle-weblogic-server-12c), we will use 12.2.1.3.  
 ```
 kubectl create secret docker-registry regcred \
 --docker-server=docker.io \
