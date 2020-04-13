@@ -1,10 +1,9 @@
 # Set up simple WebLogic cluster on AKS manually
-
-The page describe how to set up simple WebLogic cluster on ASK, we recommand running the following commands with Azure Cloud Shell, without having to install anything on your local environment.  
+This article shows how to set up WebLogic cluster on Azure Kubernetes Service (AKS) with Azure CLI. When you're done, your WebLogic cluster domain runs on AKS cluster instance, you can manage your WebLogic domain with a browser by accessing WebLogic Server Console portal.  
 
 Table of Contents
 =================
-[Start Azure Cloud Shell](#start-azure-cloud-shell)  
+[Prerequisites](#prerequisites)  
 [Create AKS cluster](#create-aks-cluster)  
 [Create storage and set up file share](#create-storage-and-set-up-file-share)  
 [Install WebLogic Operator](#install-weblogic-operator)  
@@ -15,8 +14,12 @@ Table of Contents
 [Troubleshooting](#troubleshooting)  
 [Useful links](#useful-links)  
 
-## Start Azure Cloud Shell
-If you don't know how to start Azure Cloud Shell, please go to [Use Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough#use-azure-cloud-shell).   
+## Prerequisites
+To create WebLogic cluster instance, you must have the following installed in your local environment:
+* [kubectl](https://kubernetes-io-vnext-staging.netlify.com/docs/tasks/tools/install-kubectl/)  
+* [helm](https://helm.sh/docs/intro/install/), version 3.x.  
+
+Another option, Azure hosts Azure Cloud Shell, an interactive shell environment that you can use through your browser. You can use either Bash or PowerShell with Cloud Shell to work with Azure services. You can use the Cloud Shell preinstalled commands to run the code in this article without having to install anything on your local environment. To start Azure Cloud Shell, please go to [Overview of Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).  
 
 ## Create AKS cluster  
 AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).  We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
@@ -170,7 +173,7 @@ subjects:
   namespace: kube-system
 EOF
 ```
-Install WebLogic Operator, The operator’s Helm chart is located in the kubernetes/charts/weblogic-operator directory.    
+Install WebLogic Operator, The operator’s Helm chart is located in the kubernetes/charts/weblogic-operator directory. Please check helm version first if you are using Azure Cloud Shell, and run the corresponding command.  
 ```
 # get helm version
 helm version
@@ -231,7 +234,12 @@ weblogic-operator-secrets                 Opaque                                
 ```
 3. Create Weblogic Domain  
 We will use create-domain.sh in weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv to create domain.
-Firstly, create a copy of create-domain-inputs.yaml and name domain1.yaml, change the following inputs:
+Firstly, create a copy of create-domain-inputs.yaml and name domain1.yaml, change the following inputs.  
+* image: change to docker path of the image, with value store/oracle/weblogic:12.2.1.3.  
+* imagePullSecretName: change to docker credential you create just now, named regcred in this example.  
+* exposeAdminNodePort: set true, as we will use admin console portal to manage WebLogic Server.  
+* persistentVolumeClaimName: we will persist data to azurefile in this example.  
+
 ```
 image: store/oracle/weblogic:12.2.1.3
 imagePullSecretName: regcred
