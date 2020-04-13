@@ -16,6 +16,7 @@ Table of Contents
 
 ## Prerequisites
 To create WebLogic cluster instance, you must have the following installed in your local environment:
+* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure)  
 * [kubectl](https://kubernetes-io-vnext-staging.netlify.com/docs/tasks/tools/install-kubectl/)  
 * [helm](https://helm.sh/docs/intro/install/), version 3.x.  
 
