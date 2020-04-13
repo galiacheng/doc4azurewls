@@ -1,5 +1,5 @@
 # Set up simple WebLogic cluster on AKS manually
-This article shows how to set up WebLogic cluster on Azure Kubernetes Service (AKS) with Azure CLI. When you're done, your WebLogic cluster domain runs on AKS cluster instance, you can manage your WebLogic domain with a browser by accessing WebLogic Server Console portal.  
+This article shows how to set up WebLogic cluster on Azure Kubernetes Service (AKS). When you're done, your WebLogic cluster domain runs on AKS cluster instance, you can manage your WebLogic domain with a browser by accessing WebLogic Server Console portal.  
 
 Table of Contents
 =================
