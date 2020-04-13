@@ -19,7 +19,7 @@ To create WebLogic cluster instance, you must have the following installed in yo
 * OS: Linux, Unix, [WSL for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)  
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure)  
 * [kubectl](https://kubernetes-io-vnext-staging.netlify.com/docs/tasks/tools/install-kubectl/)  
-* [helm](https://helm.sh/docs/intro/install/), version 3.x  
+* [helm](https://helm.sh/docs/intro/install/), version 3.1 and above  
 
 Another option, Azure hosts Azure Cloud Shell, an interactive shell environment that you can use through your browser. You can use either Bash or PowerShell with Cloud Shell to work with Azure services. You can use the Cloud Shell preinstalled commands to run the code in this article without having to install anything on your local environment. To start Azure Cloud Shell, please go to [Overview of Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).  
 
