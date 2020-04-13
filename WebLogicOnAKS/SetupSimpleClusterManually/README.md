@@ -26,7 +26,7 @@ Another option, Azure hosts Azure Cloud Shell, an interactive shell environment 
 AKS is a managed Kubernetes service that lets you quickly deploy and manage clusters. To learn more, please go to [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).  We will deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI.  
 We will disable http-appliaction-routing by default, if you want to enable http_application_routing, please follow [HTTP application routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing)
 
-If you run the command in your local environment, before running commands of this article, please run az login and az account set to login to Azure and set your working subscription.  
+If you run commands in your local environment, please run az login and az account set to login to Azure and set your working subscription first.  
 ```
 # login 
 az login
