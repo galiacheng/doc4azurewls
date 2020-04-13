@@ -16,6 +16,7 @@ Table of Contents
 
 ## Prerequisites
 To create WebLogic cluster instance, you must have the following installed in your local environment:
+* OS: Linux, Unix, [WSL for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)  
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure)  
 * [kubectl](https://kubernetes-io-vnext-staging.netlify.com/docs/tasks/tools/install-kubectl/)  
 * [helm](https://helm.sh/docs/intro/install/), version 3.x  
@@ -214,7 +215,7 @@ We will use sample script in weblogic operator repository, clone the repository 
 git clone https://github.com/oracle/weblogic-kubernetes-operator
 ```
 1. Create domain credentials  
-We will use create-weblogic-credentials.sh in weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials to create domain credentials.
+We will use create-weblogic-credentials.sh in weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials to create domain credentials.  
 ```
 #cd weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials
 ./create-weblogic-credentials.sh -u weblogic -p welcome1 -d domain1
@@ -249,13 +250,13 @@ Firstly, create a copy of create-domain-inputs.yaml and name domain1.yaml, chang
 * imagePullSecretName: change to docker credential you create just now, named regcred in this example.  
 * exposeAdminNodePort: set true, as we will use admin console portal to manage WebLogic Server.  
 * persistentVolumeClaimName: we will persist data to azurefile in this example.  
-
 ```
 image: store/oracle/weblogic:12.2.1.3
 imagePullSecretName: regcred
 exposeAdminNodePort: true
 persistentVolumeClaimName: azurefile
 ```
+
 Create domain1 with command:
 ```
 #cd weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv
