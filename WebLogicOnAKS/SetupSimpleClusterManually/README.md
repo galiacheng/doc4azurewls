@@ -449,7 +449,7 @@ Application address is : http://104.45.176.215:8001/webtestapp
 The test application will list the server host and server ip in the page.
 
 ## Access WebLogic logs
-Logs are store in azure file share, following the steps to access log:  
+Logs are stored in azure file share, following the steps to access log:  
 1. Go to Azure portal https://ms.portal.azure.com  
 2. Go to your resource group  
 3. Open the storage account  
