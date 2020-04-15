@@ -11,16 +11,16 @@ portal.
 Table of Contents
 =================
 
-[Prerequisites](#prerequisites)
-[Create AKS cluster](#create-aks-cluster)
-[Create storage and set up file share](#create-storage-and-set-up-file-share)
-[Install WebLogic Operator](#install-weblogic-operator)
-[Create WebLogic Domain](#create-weblogic-domain)
-[Automation](#automation)
-[Deploy sample application](#deploy-sample-application)
-[Access WebLogic logs](#access-weblogic-logs)
-[Troubleshooting](#troubleshooting)
-[Useful links](#useful-links)
+[Prerequisites](#prerequisites)  
+[Create AKS cluster](#create-aks-cluster)  
+[Create storage and set up file share](#create-storage-and-set-up-file-share)  
+[Install WebLogic Operator](#install-weblogic-operator)  
+[Create WebLogic Domain](#create-weblogic-domain)  
+[Automation](#automation)  
+[Deploy sample application](#deploy-sample-application)  
+[Access WebLogic logs](#access-weblogic-logs)  
+[Troubleshooting](#troubleshooting)  
+[Useful links](#useful-links)  
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ Azure Kubernetes Service (AKS) cluster using the Azure CLI.
 
 We will disable http-appliaction-routing by default, if you want to
 enable http_application_routing, please follow [HTTP application
-routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing)
+routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
 
 If you run commands in your local environment, please run az login and
 az account set to login to Azure and set your working subscription
@@ -689,8 +689,8 @@ Logs are stored in azure file share, following the steps to access log:
 
 ## Useful links
 
-[Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)
-[WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-kubernetes-operator/userguide/introduction/introduction/)
-[Manually create and use a volume with Azure Files share in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume)
+[Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)  
+[WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-kubernetes-operator/userguide/introduction/introduction/)  
+[Manually create and use a volume with Azure Files share in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume)  
 [Create a Secret by providing credentials on the command line](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
 
