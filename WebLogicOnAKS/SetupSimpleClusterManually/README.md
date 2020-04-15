@@ -164,7 +164,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 Mount the file share as a persistent volume, create file `pv.yaml` with
 the following content, use the `shareName` (weblogic in this example)
-and `SecretName` (azure-secret in this example) from the above settings.
+and `secretName` (azure-secret in this example) from the above settings.
 
 ```
 apiVersion: v1
@@ -613,7 +613,7 @@ page.
 
 ## Access WebLogic logs
 
-Logs are store in azure file share, following the steps to access log:
+Logs are stored in azure file share, following the steps to access log:
 
 1. Go to Azure portal https://ms.portal.azure.com
 2. Go to your resource group
@@ -630,7 +630,7 @@ Logs are store in azure file share, following the steps to access log:
 
 1. Get pod error details
 
-   You may get the following message while createing weblogic domain: "the job status is not Completed!"
+   You may get the following message while creating weblogic domain: "the job status is not Completed!"
 
    ```
    status on iteration 20 of 20
