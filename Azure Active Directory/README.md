@@ -1,5 +1,5 @@
 
-# Integrate Azure Active Directofy with WebLogic Server Manually  
+# Integrate Azure Active Directofy to WebLogic Server Manually  
 This document will introduce how to configure Active Directory with Weblogic server as Authentication Provider step by step.  
 Firstly, set up LDAP server.  Azure AD does not support the Lightweight Directory Access Protocol (LDAP) protocol or Secure LDAP directly. However, it's possible to enable Azure AD Domain Services (Azure AD DS) instance on your Azure AD tenant with properly configured network security groups through Azure Networking to achieve LDAP connectivity[1].  
 
