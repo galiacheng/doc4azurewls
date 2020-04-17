@@ -53,8 +53,8 @@ We will disable http-appliaction-routing by default, if you want to
 enable http_application_routing, please follow [HTTP application
 routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
 
-If you run commands in your local environment, please run az login and
-az account set to login to Azure and set your working subscription
+If you run commands in your local environment, please run `az login` and
+`az account set` to login to Azure and set your working subscription
 first.
 
 ```
