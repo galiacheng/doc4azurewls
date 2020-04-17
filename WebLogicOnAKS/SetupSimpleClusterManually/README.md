@@ -129,7 +129,7 @@ Create storage account first:
 
 ```
 # Change the value as needed for your own environment
-AKS_PERS_STORAGE_ACCOUNT_NAME=wlssimpleclusterstorageaccount
+AKS_PERS_STORAGE_ACCOUNT_NAME=wlssimplestorageacct
 
 az storage account create \
    -n $AKS_PERS_STORAGE_ACCOUNT_NAME \
