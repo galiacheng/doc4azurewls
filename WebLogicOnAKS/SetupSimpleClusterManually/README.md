@@ -313,7 +313,7 @@ weblogic-operator-6655cdc949-x58ts                1/1     Running     0         
 
 We will use sample script in weblogic operator repository.
 
-1. Create domain credentials We will use
+1. Create domain credentials. We will use
    `create-weblogic-credentials.sh` in
    `weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials`
    to create domain credentials.
@@ -323,7 +323,7 @@ We will use sample script in weblogic operator repository.
 ./create-weblogic-credentials.sh -u weblogic -p welcome1 -d domain1
 ```
 
-2. Create Docker Credentials for pulling image, please change
+2. Create Docker credentials for pulling image, please change
    `docker-username`, `docker-password`, `docker-email` to your
    DockerHub account.
 
