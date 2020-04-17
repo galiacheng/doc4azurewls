@@ -125,7 +125,7 @@ Files
 Documentation](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume)
 for details about this full featured cloud storage solution.  
 
-Create storage account first:
+Create storage account first, please note that storage account name can contain only lowercase letters and numbers, between 3 and 24 characters:
 
 ```
 # Change the value as needed for your own environment
