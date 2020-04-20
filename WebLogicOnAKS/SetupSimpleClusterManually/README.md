@@ -368,7 +368,7 @@ We will use sample script in weblogic operator repository.
    Firstly, create a copy of `create-domain-inputs.yaml` named `domain1.yaml`, and change the following inputs.
 
    * `image`: change to docker path of the image, with value `store/oracle/weblogic:12.2.1.3`.
-   * `imagePullSecretName`: change to docker credential you create just now, named `regcred` in this example.
+   * `imagePullSecretName`: uncomment the line, and change it to docker credential you create just now, named `regcred` in this example.
    * `exposeAdminNodePort`: set true, as we will use admin console portal to manage WebLogic Server.
    * `persistentVolumeClaimName`: we will persist data to azurefile in this example.
    
