@@ -13,38 +13,20 @@ We will use those configuration to aad/delete nodes.
 WebLogic Domain Name: clusterDomain
 Username for WebLogic Administrator: weblogic
 Username for WebLogic Administrator: zaq1XSW2cde3
-
 ```
 
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)  
-* [JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)  
-* [Maven](https://maven.apache.org/download.cgi)  
-* [Git](https://git-scm.com/downloads)  
-
-## Build Add/Delete node template  
-Now we only allow add/delete node by deploying ARM teamplate with Azure CLI. We will use the source code from [wls-eng/arm-oraclelinux-wls-cluster](https://github.com/wls-eng/arm-oraclelinux-wls-cluster) to build the template of adding/deleting node. The repo depends on [azure/azure-javaee-iaas](https://github.com/Azure/azure-javaee-iaas).  Clone the parent repo first and then clone the cluster repo.  
-
-Clone the source code to your enviroment with `git clone`  
-```
-git clone https://github.com/Azure/azure-javaee-iaas.git
-git clone https://github.com/wls-eng/arm-oraclelinux-wls-cluster.git
-```
-
-Build azure-javaee-iaas  
+Login azure cli with `az login` and set your working subscription.  
 
 ```
-cd azure-javaee-iaas
-mvn clean install
+az login
+az account set -s your-subscription
 ```
 
-Build the teamplate with `mvn clean install`, please run the command in the top level of the repo.  
+## Download Add/Delete node template  
 
-```
-cd arm-oraclelinux-wls-cluster
-mvn -Ptemplate-validation-tests clean install
-```
-
-Template of adding node outputs to `arm-oraclelinux-wls-cluster/addnode/target/arm`, template of deleting node outputs to `arm-oraclelinux-wls-cluster/deletenode/target/arm`.  
+Download latest template from https://github.com/galiacheng/arm-oraclelinux-wls-cluster/actions.  
+Select the latest build and download `arm-oraclelinux-wls-cluster-addnode-1.0.19-arm-assembly`, `arm-oraclelinux-wls-cluster-deletenode-1.0.19-arm-assembly` from Artifacts, and unzip to your local enviroment.  
 
 ## Add nodes  
 
@@ -52,20 +34,21 @@ We have got template of adding note in last step, now we are going to add 2 node
 We need OTN account to download JDK and WebLogic installer, if you don't have one, please request it from https://profile.oracle.com/myprofile/account/create-account.jspx.  
 Create parameters files, rename addnodedeploy.parameters.json as parameters.json, and input values of parameters. The parameters are used to specify information of existing cluster and configuration of new nodes.  
 Besides, we have to specify the location of scripts, please add `_artifactsLocation` and input value as following.  
-Location: location of your cluster instance.  
-acceptOTNLicenseAgreement: Y
-adminPasswordOrKey: your admin password for vm machine that will host new managed nodes.  
-adminURL: the url of weblogic cluster admin server, should be adminVM:7001, if you use default setting to create weblogic cluster.  
-adminUsername: your admin user name for vm machine that will host new managed nodes.  
-dnsLabelPrefix: dns prefix of the managed node address.  
-managedServerPrefix: prefix of managed server name, used to create managerd server in WebLogic Cluster.  
-numberOfNodes: expected numbers of new managed nodes.  
-otnAccountPassword: your otn account password.  
-otnAccountUsername: your otn account.  
-vmSizeSelect: size of vm machine.  
-wlsDomainName: domain name of WebLogic Cluster, default value is clusterDomain.  
-wlsPassword: password for WebLogic Administrator.  
-wlsPassword: Username for WebLogic Administrator, default value is weblogic.  
+
+`Location`: location of your cluster instance.  
+`acceptOTNLicenseAgreement`: Y
+`adminPasswordOrKey`: your admin password for vm machine that will host new managed nodes.  
+`adminURL`: the url of weblogic cluster admin server, should be adminVM:7001, if you use default setting to create weblogic cluster.  
+`adminUsername`: your admin user name for vm machine that will host new managed nodes.  
+`dnsLabelPrefix`: dns prefix of the managed node address.  
+`managedServerPrefix`: prefix of managed server name, used to create managerd server in WebLogic Cluster.  
+`numberOfNodes`: expected numbers of new managed nodes.  
+`otnAccountPassword`: your otn account password.  
+`otnAccountUsername`: your otn account.  
+`vmSizeSelect`: size of vm machine.  
+`wlsDomainName`: domain name of WebLogic Cluster, default value is clusterDomain.  
+`wlsPassword`: password for WebLogic Administrator.  
+`wlsPassword`: Username for WebLogic Administrator, default value is weblogic.  
 
 ```
 {
@@ -121,6 +104,48 @@ Deploy addnode template to add nodes to WebLogic Cluster, with az cli.
 ```
 az group deployment create --verbose --resource-group yourresourcegroup --name addnode --parameters @parameters.json --template-file mainTemplate.json
 ```
+
+## Delete nodes
+
+Unzip arm-oraclelinux-wls-cluster-deletenode-1.0.19-arm-assembly.zip to your local machine, then you will got template to delete nodes.  
+Now we are going to delete two nodes, with managered server name `msp1, msp2`, vitual machine name `mspVM1, mspVM2`.  
+Besides, we have to specify the location of scripts, please add `_artifactsLocation` and input value as following. 
+
+`adminVMName`: vm name of which host WebLogic Admin Server, default value is adminVM.  
+`deletingManagedServerNames`: msp1,msp2  
+`deletingManagedServerMachineNames`: mspVM1,mspVM2  
+`wlsUserName`: weblogic  
+`wlsPassword`: zaq1XSW2cde3  
+`wlsForceShutDown`: false  
+
+```
+{
+  "_artifactsLocation":{
+	"value": "https://raw.githubusercontent.com/galiacheng/arm-oraclelinux-wls-cluster/deletenode/deletenode/src/main/"
+  },
+  "adminVMName": {
+    "value": "adminVM"
+  },
+  "deletingManagedServerNames": {
+    "value": "msp1,msp2"
+  },
+  "deletingManagedServerMachineNames": {
+    "value": "mspVM1,mspVM2"
+  },
+  "wlsUserName": {
+    "value": "weblogic"
+  },
+  "wlsPassword": {
+    "value": "APB9faTHAPB9faTH"
+  },
+  "wlsForceShutDown": {
+    "value": "false"
+  }
+}
+```
+
+After deployment success, will output commands to delete azure resources.  
+If you don't want to keep the related azure resource, run the command to delete them.  
 
 
 
