@@ -1,5 +1,5 @@
 
-# Add/Delete WebLogic Cluster Nodes
+# Add/Delete WebLogic Cluster Nodes with Azure CLI
 
 This article describes how to add and delete nodes to an existing WebLogic Cluster, which is created with [Azure WebLogic Cluster Application](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster) from [Azure Portal](https://ms.portal.azure.com/). After doing the following steps in the article, you will add expected managed nodes to your cluster with WebLogic managed server set up, or remove managed nodes from your cluster and deleting the related azure resource.
 
