@@ -121,7 +121,7 @@ Besides, we have to specify the location of scripts, please add `_artifactsLocat
 ```
 {
   "_artifactsLocation":{
-	"value": "https://raw.githubusercontent.com/galiacheng/arm-oraclelinux-wls-cluster/deletenode/deletenode/src/main/"
+	"value": "https://raw.githubusercontent.com/galiacheng/arm-oraclelinux-wls-cluster/master/deletenode/src/main/"
   },
   "adminVMName": {
     "value": "adminVM"
