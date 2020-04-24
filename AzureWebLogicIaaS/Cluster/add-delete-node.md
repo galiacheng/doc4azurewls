@@ -145,10 +145,10 @@ Besides, we have to specify the location of scripts, please add `_artifactsLocat
 ```
 
 Deploy the template to delete managed nodes from WebLogic Cluster.  
-``
+```
 # please change resource group to yours
 az group deployment create --verbose --resource-group wls-cluster-deletenode --name deletenode --parameters @parameters.json --template-file mainTemplate.json
-``
+```
 
 After deployment success, will output commands to delete azure resources.  
 If you don't want to keep the related azure resource, run the command to delete them.  
