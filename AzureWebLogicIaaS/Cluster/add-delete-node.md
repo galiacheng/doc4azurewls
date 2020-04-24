@@ -106,7 +106,7 @@ az group deployment create --verbose --resource-group yourresourcegroup --name a
 
 ## Delete nodes
 
-Unzip arm-oraclelinux-wls-cluster-deletenode-1.0.19-arm-assembly.zip to your local machine, then you will got template to delete nodes.  
+Unzip arm-oraclelinux-wls-cluster-deletenode-1.0.0-arm-assembly.zip to your local machine, then you will got template to delete nodes.  
 Now we are going to delete two nodes, with managered server name `msp1, msp2`, vitual machine name `mspVM1, mspVM2`.  
 Create parameters file `parameters.json`, put it in the same folder with `mainTemplate.json` and input values of parameters. The parameters specify information of existing cluster and details of managed nodes to be deleted.  
 Besides, we have to specify the location of scripts, please add `_artifactsLocation` and input value as following. 
