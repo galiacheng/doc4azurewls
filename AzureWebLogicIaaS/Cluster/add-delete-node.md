@@ -163,9 +163,9 @@ Steps to get the output:
 
 Example outputs:
 
-``
+```
 export resourceGroup=wls-cluster-deletenode;export deleteingIDs="";export managedServerMachineNames=$(echo mspVM1,mspVM2 | tr "," "\n");az extension add --name resource-graph;for machine in $managedServerMachineNames;do vmId=$(az graph query -q "Resources | where type =~ \"microsoft.compute/virtualmachines\" | where name=~ \"${machine}\" | where resourceGroup =~ \"${resourceGroup}\" | project vmid = id" -o tsv); nicId=$(az graph query -q "Resources | where type =~ \"microsoft.compute/virtualmachines\" | where name=~ \"${machine}\" | where resourceGroup =~ \"${resourceGroup}\" | extend nics=array_length(properties.networkProfile.networkInterfaces) | mv-expand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ \"true\" or isempty(nic) | project nicId = tostring(nic.id)" -o tsv);ipId=$(az graph query -q "Resources | where type =~ \"microsoft.network/networkinterfaces\" | where id=~ \"${nicId}\" | extend ipConfigsCount=array_length(properties.ipConfigurations) | mv-expand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ \"true\" | project publicIpId = tostring(ipconfig.properties.publicIPAddress.id)" -o tsv);osDiskId=$(az graph query -q "Resources | where type =~ \"microsoft.compute/virtualmachines\" | where name=~ \"${machine}\" | where resourceGroup =~ \"${resourceGroup}\" | project osDiskId = tostring(properties.storageProfile.osDisk.managedDisk.id)" -o tsv);dataDiskIds=$(az graph query -q "Resources | where type =~ \"microsoft.compute/virtualmachines\" | where name=~ \"${machine}\" | where resourceGroup =~ \"${resourceGroup}\" | mv-expand datadisk=properties.storageProfile.dataDisks | project datadisk.managedDisk.id" -o tsv);deleteingIDs=$(echo $deleteingIDs ${vmId} ${nicId} ${ipId} ${osDiskId} ${dataDiskIds});done;echo "List ID of resource to be deleted: ";echo ${deleteingIDs} | tr " " "\n";echo -n "Are you sure to delete these resources (y/n)?";read answer;if [ "$answer" != "${answer#[Yy]}" ] ;then az resource delete --verbose --ids ${deleteingIDs};fi
-``
+```
 
 Example running result:
 
