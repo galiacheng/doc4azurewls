@@ -7,7 +7,6 @@ This article describes how to add and delete nodes to an existing WebLogic Clust
 
 * Existing WebLogic Cluster Instance  
 This article assumes you have set up your cluster with [Azure WebLogic Cluster Application](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster), if you don't have one, please follow [Get Started with Oracle WebLogic Server on Microsoft Azure IaaS](https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/wlazu/get-started-oracle-weblogic-server-microsoft-azure-iaas.html#GUID-E0B24A45-F496-4509-858E-103F5EBF67A7) to create one with the following default configuration:  
-We will use those configuration to aad/delete nodes.  
 
 ```
 WebLogic Domain Name: clusterDomain
