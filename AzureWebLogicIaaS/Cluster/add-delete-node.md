@@ -25,7 +25,7 @@ az account set -s your-subscription
 ## Download Add/Delete node template  
 
 Download latest template from https://github.com/galiacheng/arm-oraclelinux-wls-cluster/actions.  
-Select the latest build and download `arm-oraclelinux-wls-cluster-addnode-1.0.19-arm-assembly`, `arm-oraclelinux-wls-cluster-deletenode-1.0.19-arm-assembly` from Artifacts, and unzip to your local enviroment.  
+Select the latest build and download `arm-oraclelinux-wls-cluster-addnode-1.0.19-arm-assembly`, `arm-oraclelinux-wls-cluster-deletenode-1.0.0-arm-assembly` from Artifacts, and unzip to your local enviroment.  
 
 ## Add nodes  
 
