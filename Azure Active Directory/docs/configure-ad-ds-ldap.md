@@ -35,7 +35,7 @@ You can follow [Test queries to the managed domain](https://docs.microsoft.com/e
 
 Note: You have to connect to ldap server successfully, then bind a user.  
 Address of ldap server is ldaps.wls-security.com, port is 636, domain is wls-security.com. AD DS is only SSL access now.  
-Pay attension to the user name, actually, we create user wlstest@yourtenant.com, just input the user name. Besides, the user must be belonging to the AAD DC Administrators group.  
+Pay attension to the user name, actually, we create user `wlstest@yourtenant.com`, just input with user name `wlstest`. Besides, the user must be in the AAD DC Administrators group.  
   ![Secure LDAP](images/secure-adds-ldap.PNG)  
 
 * Use Apache Directory Studio
