@@ -8,12 +8,12 @@ If you have a cloud-only user in your subscription, please skip this step.
 Before creating Azure AD DS, please follow the [Cloud Only User](docs/cloud-only-user.md) to create a cloud-only user for LADP connection. We will use the user to login LDAP server in the following steps.  
 
 ## Step 2: Create domain service and configure LDAP  
-If you have a domain service, please go to configure LDAP.  
+If you have a domain service, please go to Configure LDAP.  
 * Create a domain service  
 Please follow the [Create Domain Service](docs/create-domain-service.md) to create your domain service, after finishing deployment, a running domain servcie is created, such as example.com. Please remeber to confige DNS!  
 We have to reset user password before login to the domain. Please follow [Cloud Only User](docs/cloud-only-user.md) to reset password, it takes about half an hour to work correctly.  
 
-* configure LDAP  
+* Configure LDAP  
 Please follow the [Configure ADDS LDAP](docs/configure-ad-ds-ldap.md) to configure secure LDAP for you domain, after successful deployment, we will have LDAP server running, such as ldaps.example.com. SSL is only allow to access the ldap server, port is 636.  
 We have to add a rule to network security group to allow access to LDAP server.  
 
