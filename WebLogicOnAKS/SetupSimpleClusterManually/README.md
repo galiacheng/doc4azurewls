@@ -87,8 +87,8 @@ az aks create \
    --location $AKS_PERS_LOCATION
 ```
 
-After the deployment finishes, run the fowllowing command to connect to
-AKS cluster.  This command updates your local `~/.kube/config` so that
+After the deployment finishes, run the following command to connect to
+the AKS cluster. This command updates your local `~/.kube/config` so that
 subsequent `kubectl` commands interact with the named AKS cluster.
 
 ```
