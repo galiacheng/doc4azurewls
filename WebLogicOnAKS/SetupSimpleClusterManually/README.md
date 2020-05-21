@@ -26,11 +26,11 @@ Table of Contents
 
 This guide assumes the following prerequisites.
 
-There are two ways to complete the setup steps. You can use a local environment setup. This allows for the greatest flexiblity while requires some setup effort. It is also possible to use the Azure Cloud Shell which is browser based and runs on the Azure Portal. This option may be best for users already familiar with the utility and Azure.
+There are two ways to complete the setup steps. You can use a local environment setup. This allows for the greatest flexiblity while requiring some setup effort. It is also possible to use the Azure Cloud Shell which is a browser based utility and runs on the Azure Portal. This option may be best for users already familiar with the utility and Azure. It is also suitable for users wanting to forego additional software installations on their local machine.
 
-### Local Environment
+### Local Environment Setup
 
-* OS: Linux, Unix, [WSL for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+* Operating System: Linux, Unix, macOS, [WSL for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure)
 
