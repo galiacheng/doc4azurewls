@@ -75,6 +75,7 @@ AKS_CLUSTER_NAME=WLSSimpleCluster
 AKS_PERS_RESOURCE_GROUP=wls-simple-cluster
 AKS_PERS_LOCATION=eastus
 
+az group create --name AKS_PERS_RESOURCE_GROUP --location AKS_PERS_LOCATION
 az aks create \
    --resource-group $AKS_PERS_RESOURCE_GROUP \
    --name $AKS_CLUSTER_NAME \
