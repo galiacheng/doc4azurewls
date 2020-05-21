@@ -44,7 +44,7 @@ The Azure Cloud Shell already has the necessary prerequisites installed. To
 start the Azure Cloud Shell, please go to [Overview of Azure Cloud
 Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 
-## Create Azure Kubernetes Service (AKS) cluster
+## Create Azure Kubernetes Service (AKS) Cluster
 
 AKS is a managed Kubernetes service that lets you quickly deploy and
 manage clusters. To learn more, please go to [Azure Kubernetes Service
