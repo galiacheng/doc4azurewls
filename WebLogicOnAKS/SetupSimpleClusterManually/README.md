@@ -1,4 +1,4 @@
-# Set up simple WebLogic cluster on AKS manually
+# Running a WebLogic Cluster on the Azure Kubernetes Service
 
 This article shows how to use the [Oracle WebLogic Kubernetes
 Operator](https://oracle.github.io/weblogic-kubernetes-operator/)
