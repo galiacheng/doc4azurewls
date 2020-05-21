@@ -1,11 +1,11 @@
 # Running a WebLogic Cluster on the Azure Kubernetes Service
 
-This article shows how to use the [Oracle WebLogic Kubernetes
+This guide demonstrates how to use the [Oracle WebLogic Kubernetes
 Operator](https://oracle.github.io/weblogic-kubernetes-operator/)
-(hereafter "the Operator") to set up WebLogic cluster on Azure
-Kubernetes Service (AKS). After completing this article, your WebLogic
+(hereafter "the Operator") to set up a WebLogic cluster on the Azure
+Kubernetes Service (AKS). After going through the steps in the guide, your WebLogic
 cluster domain runs on an AKS cluster instance and you can manage your
-WebLogic domain with a browser by accessing WebLogic Server Console
+WebLogic domain with a browser by accessing the WebLogic Server Console
 portal.
 
 Table of Contents
