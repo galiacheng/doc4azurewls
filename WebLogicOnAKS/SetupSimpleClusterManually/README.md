@@ -47,8 +47,8 @@ Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 ## Create Azure Kubernetes Service (AKS) Cluster
 
 AKS is a managed Kubernetes service that lets you quickly deploy and
-manage clusters. To learn more, please go to [Azure Kubernetes Service
-(AKS)](https://docs.microsoft.com/en-us/azure/aks/).  We will deploy an
+manage clusters. To learn more, please go to the [Azure Kubernetes Service
+(AKS)](https://docs.microsoft.com/en-us/azure/aks/) overview page.  We will deploy an
 Azure Kubernetes Service (AKS) cluster using the Azure CLI.
 
 We will disable http-appliaction-routing by default, if you want to
