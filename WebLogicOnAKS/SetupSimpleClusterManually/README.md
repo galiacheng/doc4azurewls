@@ -40,8 +40,8 @@ There are two ways to complete the setup steps. You can use a local environment 
 
 ### Azure Cloud Shell
 
-Azure Cloud Shell already has the necessary prerequisites installed. To
-start Azure Cloud Shell, please go to [Overview of Azure Cloud
+The Azure Cloud Shell already has the necessary prerequisites installed. To
+start the Azure Cloud Shell, please go to [Overview of Azure Cloud
 Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 
 ## Create Azure Kubernetes Service (AKS) cluster
