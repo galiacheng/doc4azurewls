@@ -79,7 +79,6 @@ az group create --name AKS_PERS_RESOURCE_GROUP --location AKS_PERS_LOCATION
 az aks create \
    --resource-group $AKS_PERS_RESOURCE_GROUP \
    --name $AKS_CLUSTER_NAME \
-   --vm-set-type VirtualMachineScaleSets \
    --node-count 3 \
    --generate-ssh-keys \
    --kubernetes-version 1.14.8 \
