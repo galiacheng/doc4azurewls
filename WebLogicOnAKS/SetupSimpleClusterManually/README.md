@@ -51,7 +51,7 @@ manage clusters. To learn more, please go to the [Azure Kubernetes Service
 (AKS)](https://docs.microsoft.com/en-us/azure/aks/) overview page.  We will deploy an
 Azure Kubernetes Service (AKS) cluster using the Azure CLI.
 
-We will disable http-appliaction-routing by default, if you want to
+We will disable http-application-routing by default, if you want to
 enable http_application_routing, please follow [HTTP application
 routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
 
