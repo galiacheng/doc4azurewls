@@ -315,7 +315,7 @@ weblogic-operator-6655cdc949-x58ts                1/1     Running     0         
 ```
 ## Create WebLogic Domain
 
-We will use sample script in weblogic operator repository.
+We will use the sample scripts in the Weblogic Operator repository to setup the domain.
 
 1. Create domain credentials. We will use
    `create-weblogic-credentials.sh` in
