@@ -341,13 +341,13 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
 
    ```
 
-   To verify secrets with command:
+   Verify secrets with the following command:
 
    ```
    kubectl get secret
    ```
 
-   Output:
+   Example output:
 
    ```
    NAME                                      TYPE                                  DATA   AGE
