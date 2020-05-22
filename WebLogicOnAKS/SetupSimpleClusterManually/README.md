@@ -326,12 +326,9 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
 ./create-weblogic-credentials.sh -u weblogic -p welcome1 -d domain1
 ```
 
-2. Create Docker credentials for pulling image, please change
+2. Create the DockerHub credentials for pulling the WebLogic image, please change
    `docker-username`, `docker-password`, `docker-email` to your
-   DockerHub account.
-
-   If you don't have a docker account, please sign up in [docker
-   hub](https://www.docker.com/), then checkout [Oracle WebLogic
+   DockerHub account details (if you don't have an existing account, please sign up for a new account at [DockerHub](https://www.docker.com/)). Also, do a checkout of [Oracle WebLogic
    Server](https://hub.docker.com/_/oracle-weblogic-server-12c), we will
    use 12.2.1.3.
 
