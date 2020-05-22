@@ -65,7 +65,7 @@ az login
 az account set -s your-subscription
 ```
 
-Run the following commands to create AKS cluster instance.
+Run the following commands to create the AKS cluster instance.
 
 ```
 # Change these parameters as needed for your own environment
@@ -245,8 +245,8 @@ serve as a container infrastructure hosting WebLogic Server instances.
 The official Oracle documentation for the Operator is available at this location:
 [https://oracle.github.io/weblogic-kubernetes-operator/](https://oracle.github.io/weblogic-kubernetes-operator/).
 
-The steps in this document use files from the GitHub repo of the
-Operator, at version v2.5.0.  Clone the Operator from GitHub, and check
+The steps in this document use files from the GitHub repository of the
+Operator, at version v2.5.0. Clone the Operator from GitHub, and check
 out the v2.5.0 tag.
 
 ```
@@ -280,9 +280,9 @@ Use the `kubectl` command to apply the role.
 kubectl apply -f helm-grant-role.yaml
 ```
 
-Install WebLogic Operator, The operator’s Helm chart is located in the
-`kubernetes/charts/weblogic-operator` directory. Please check helm version
-first if you are using Azure Cloud Shell, and run the corresponding
+Install the WebLogic Operator, the Operator’s Helm chart is located in the
+`kubernetes/charts/weblogic-operator` directory. Please check the Helm version
+first if you are using the Azure Cloud Shell, and run the corresponding
 command.
 
 ```
