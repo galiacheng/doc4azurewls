@@ -32,6 +32,8 @@ There are two ways to complete the setup steps. You can use a local environment 
 
 * Operating System: Linux, Unix, macOS, [WSL for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
+* [Git](https://git-scm.com/downloads)
+
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure)
 
 * [kubectl](https://kubernetes-io-vnext-staging.netlify.com/docs/tasks/tools/install-kubectl/)
