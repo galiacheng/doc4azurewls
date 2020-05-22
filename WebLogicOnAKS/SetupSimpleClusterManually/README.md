@@ -317,10 +317,9 @@ weblogic-operator-6655cdc949-x58ts                1/1     Running     0         
 
 We will use the sample scripts in the Weblogic Operator repository to setup the domain.
 
-1. Create domain credentials. We will use
-   `create-weblogic-credentials.sh` in
-   `weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials`
-   to create domain credentials.
+1. We will use the `create-weblogic-credentials.sh` script in the
+   `weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials` directory
+   to create the domain credentials.
 
 ```
 #cd weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials
