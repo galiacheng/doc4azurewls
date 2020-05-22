@@ -286,28 +286,28 @@ first if you are using the Azure Cloud Shell, and run the corresponding
 command.
 
 ```
-# get helm version
+# Check the helm version
 helm version
 
-# For helm 2.x
+# For Helm 3.x, run the following
+helm repo add weblogic-operator https://oracle.github.io/weblogic-kubernetes-operator/charts
+helm repo update
+helm install weblogic-operator weblogic-operator/weblogic-operator
+
+# For helm 2.x, run the following
 helm init
 helm repo add weblogic-operator https://oracle.github.io/weblogic-kubernetes-operator/charts
 helm repo update
 helm install weblogic-operator/weblogic-operator --name weblogic-operator
-
-# For Helm 3.x
-helm repo add weblogic-operator https://oracle.github.io/weblogic-kubernetes-operator/charts
-helm repo update
-helm install weblogic-operator weblogic-operator/weblogic-operator
 ```
 
-To verify the operator with command, status should be running.
+Verify the Operator with the following command, the status should be running.
 
 ```
 kubectl get pods -w
 ```
 
-Output:
+Example output:
 
 ```
 NAME                                              READY   STATUS      RESTARTS   AGE
