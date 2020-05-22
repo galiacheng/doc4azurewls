@@ -218,7 +218,7 @@ kubectl apply -f pv.yaml
 kubectl apply -f pvc.yaml
 ```
 
-Use the command to verify:
+Use the following command to verify:
 
 ```
 kubectl get pv,pvc
