@@ -255,12 +255,11 @@ cd weblogic-kubernetes-operator/
 git checkout v2.5.0
 ```
 
-Kubernetes operators use [Helm](https://helm.sh/) to manage Kubernetes
-applications.  We must to grant the Helm service account with the
-cluster-admin role with the following command.
+Kubernetes Operators use [Helm](https://helm.sh/) to manage Kubernetes
+applications. Create a file named `helm-grant-role.yaml` with the following content to grant the Helm service account with the
+cluster-admin role.
 
 ```
-cat <<EOF | kubectl apply -f -
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -273,7 +272,12 @@ subjects:
 - kind: ServiceAccount
   name: default
   namespace: kube-system
-EOF
+```
+
+Use the `kubectl` command to apply the role.
+
+```
+kubectl apply -f helm-grant-role.yaml
 ```
 
 Install WebLogic Operator, The operator’s Helm chart is located in the
