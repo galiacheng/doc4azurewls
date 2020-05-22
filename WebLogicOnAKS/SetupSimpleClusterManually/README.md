@@ -240,11 +240,11 @@ MODES`, `CLAIM`, and `STORAGECLASS` are vital.
 
 ## Install WebLogic Operator
 
-Oracle WebLogic Server Kubernetes Operator (the Operator) is an adapter
+The Oracle WebLogic Server Kubernetes Operator (the Operator) is an adapter
 to integrate WebLogic Server and Kubernetes, allowing Kubernetes to
 serve as a container infrastructure hosting WebLogic Server instances.
 
-The official Oracle documentation for the Operator is
+The official Oracle documentation for the Operator is available at this location:
 [https://oracle.github.io/weblogic-kubernetes-operator/](https://oracle.github.io/weblogic-kubernetes-operator/).
 
 The steps in this document use files from the GitHub repo of the
