@@ -111,7 +111,7 @@ aks-nodepool1-58449474-vmss000001   Ready    agent   2d22h   v1.14.8
 aks-nodepool1-58449474-vmss000002   Ready    agent   2d22h   v1.14.8
 ```
 
-## Create storage and set up file share
+## Create Storage and Set Up File Share
 
 Our usage pattern for the Operator involves creating Kubernetes
 "persistent volumes" to allow WebLogic to persist its configuration and
