@@ -117,17 +117,17 @@ Our usage pattern for the Operator involves creating Kubernetes
 "persistent volumes" to allow WebLogic to persist its configuration and
 data separately from the Kubernetes pods that run WebLogic workloads.
 
-We will create external data volume to access and persist data. There
-are several options for data sharing [Storage options for applications
+We will create an external data volume to access and persist data. There
+are several options for data sharing as described in [Storage options for applications
 in Azure Kubernetes Service
 (AKS)](https://docs.microsoft.com/en-us/azure/aks/concepts-storage).
 
-We will use use Azure Files as a Kubernetes volume.  Consult the [Azure
+We will use Azure Files as a Kubernetes volume. Consult the [Azure
 Files
 Documentation](https://docs.microsoft.com/en-us/azure/aks/azure-files-volume)
-for details about this full featured cloud storage solution.  
+for details about this full featured cloud storage solution.
 
-Create storage account first, please note that storage account name can contain only lowercase letters and numbers, between 3 and 24 characters:
+Create a storage account first, please note that the storage account name can contain only lowercase letters and numbers, between 3 and 24 characters:
 
 ```
 # Change the value as needed for your own environment
