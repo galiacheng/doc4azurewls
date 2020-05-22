@@ -192,9 +192,9 @@ spec:
   - nobrl
 ```
 
-Create file `pvc.yaml` with the following content for
+Create a file named `pvc.yaml` with the following content for the
 PersistentVolumeClaim.  Both `pv.yaml` and `pvc.yaml` have exactly the
-same content in the `metadata` and `storageClassName`.  This is
+same content in the `metadata` and `storageClassName` attributes.  This is
 required.
 
 ```
