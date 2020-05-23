@@ -529,10 +529,10 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    kubectl  apply -f cluster-lb.yaml
    ```
 
-   Get the addresses of the Admin and Managed Servers:
+   Get the addresses of the Admin and Managed Servers (please wait for the external IP addresses to be assigned):
 
    ```
-   kubectl get svc
+   kubectl get svc --watch
    ```
 
    Example output:
@@ -570,7 +570,7 @@ If the external IP status is pending, you can also get the server
 information with the following command:
 
 ```
-kubectl  get svc -w
+kubectl  get svc --watch
 ```
 
 ## Deploy Sample Application
