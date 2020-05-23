@@ -566,7 +566,7 @@ a storage account, a file share, and set up the WebLogic cluster:
 # set subscription
 #az account set -s your-subscription
 
-bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-emai
+bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email
 
 ```
 
