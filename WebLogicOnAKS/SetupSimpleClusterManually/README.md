@@ -152,7 +152,7 @@ export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-stri
 az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
 ```
 
-Create a Kubernetes secret. We need a storage key for the secret. Run `az
+We need to create a Kubernetes secret. We need a storage key for the secret. Run `az
 storage account keys list` to query the storage key and use `kubectl create
 secret` to create an `azure-secret`.
 
