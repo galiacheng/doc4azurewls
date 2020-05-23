@@ -553,27 +553,27 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
 
 ## Automation
 
-If you want automation for above steps, please clone this repo to your
-machine and run [setup-simple-cluster.sh](setup-simple-cluster.sh).
+If you want to automate all the above steps, please download this repository to your
+local machine and run the [setup-simple-cluster.sh](setup-simple-cluster.sh) script.
 
-The script will create resource group, AKS instance with 3 nodes,
-storage account, create file share, and set up weblogic
+The script will create a resource group, an AKS instance with 3 nodes,
+a storage account, a file share, and set up the WebLogic cluster:
 
 ```
 bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-emai
 
 ```
 
-It will print server ip address after successful deployment.
+The script will print the Admin Server IP address after successful deployment.
 
-If the external ip status if pending, you can also get the server
-information with the command:
+If the external IP status is pending, you can also get the server
+information with the following command:
 
 ```
-kubectl  get svc
+kubectl  get svc -w
 ```
 
-## Deploy sample application
+## Deploy Sample Application
 
 Go to Admin server and deploy webtestapp.war.
 
