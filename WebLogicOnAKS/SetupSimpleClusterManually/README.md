@@ -359,20 +359,18 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    weblogic-operator-secrets                 Opaque                                1      2d21h
    ```
 
-3. Create Weblogic Domain
+3. We will use the `create-domain.sh` script in the
+   `weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv` directory
+   to create the domain in the persistent volume we created previously.
 
-   We will use `create-domain.sh` in
-   `weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv`
-   to create the domain in the persistent volume you created previously.
+   First, create a copy of the `create-domain-inputs.yaml` file and name it `domain1.yaml`, and change the following values.
 
-   Firstly, create a copy of `create-domain-inputs.yaml` named `domain1.yaml`, and change the following inputs.
-
-   * `image`: change to docker path of the image, with value `store/oracle/weblogic:12.2.1.3`.
-   * `imagePullSecretName`: uncomment the line, and change it to docker credential you create just now, named `regcred` in this example.
-   * `exposeAdminNodePort`: set true, as we will use admin console portal to manage WebLogic Server.
-   * `persistentVolumeClaimName`: we will persist data to azurefile in this example.
+   * `image`: Change to the DockerHub path of the image, with the value `store/oracle/weblogic:12.2.1.3`.
+   * `imagePullSecretName`: Uncomment the line, and change it to the DockerHub credential you created previously, named `regcred` in this example.
+   * `exposeAdminNodePort`: Set to true, as we will use the Admin Console Portal to manage WebLogic Server.
+   * `persistentVolumeClaimName`: We will persist data to azurefile in this example.
    
-   Here is an example:
+   Here is the updated example snippet:
 
    ```
    image: store/oracle/weblogic:12.2.1.3
@@ -381,14 +379,14 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    persistentVolumeClaimName: azurefile
    ```
 
-   Create `domain1` with command:
+   Create `domain1` with the following command:
 
    ```
    #cd weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv
    ./create-domain.sh -i domain1.yaml -o ~/azure/output -e -v
    ```
 
-   The following example output shows weblogic domain is created successfully.
+   The following example output shows the WebLogic domain was created successfully.
 
    ```
    NAME: weblogic-operator
@@ -475,9 +473,9 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    step.
 
 4. In order to expose the power of WebLogic to the outside world, you
-   must create a `LoadBalancer` for the admin and cluster
+   must create `LoadBalancer` services for the Admin Server and the cluster.
 
-   Create `admin-lb.yaml` with the following content:
+   Create a file named `admin-lb.yaml` with the following content:
 
    ```
    apiVersion: v1
@@ -498,13 +496,13 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
      type: LoadBalancer
    ```
 
-   Create the admin loadbalancer service.
+   Create the admin load balancer service using the following command.
 
    ```
    kubectl  apply -f admin-lb.yaml
    ```
 
-   Create `cluster-lb.yaml` with the following content
+   Create a file named `cluster-lb.yaml` with the following content:
 
    ```
    apiVersion: v1
@@ -525,19 +523,19 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
      type: LoadBalancer
    ```
 
-   Create the cluster loadbalancer service.
+   Create the cluster load balancer service using the following command.
 
    ```
    kubectl  apply -f cluster-lb.yaml
    ```
 
-   Get address of admin and managed server:
+   Get the addresses of the Admin and Managed Servers:
 
    ```
-   kubectl  get svc
+   kubectl get svc
    ```
 
-   With output:
+   Example output:
 
    ```
    NAME                               TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)              AGE
@@ -551,7 +549,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    internal-weblogic-operator-svc     ClusterIP      10.0.192.13   <none>           8082/TCP             2d22h
    kubernetes                         ClusterIP      10.0.0.1      <none>           443/TCP              2d22h
    ```
-   Address to access admin server: http://52.188.176.103:7001/console
+   In the example, the URL to access admin server is: http://52.188.176.103:7001/console
 
 ## Automation
 
