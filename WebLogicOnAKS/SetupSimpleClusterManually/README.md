@@ -576,7 +576,7 @@ If the external IP status is pending, you can also get the server
 information with the following command:
 
 ```
-kubectl  get svc --watch
+kubectl get svc --watch
 ```
 
 ## Deploy Sample Application
