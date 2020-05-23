@@ -138,7 +138,7 @@ az storage account create \
    --sku Standard_LRS
 ```
 
-Create a file share. We need a storage connection string to create the
+Now we need to create a file share. We need a storage connection string to create the
 file share.  Run the `show-connection-string` command to get connection
 string, then create the share with `az storage share create`, as shown
 here.
