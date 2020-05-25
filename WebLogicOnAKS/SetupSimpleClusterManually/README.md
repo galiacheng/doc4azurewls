@@ -28,7 +28,7 @@ This guide assumes the following prerequisites.
 
 ### Existing service principle
 An AKS cluster requires either an [Azure Active Directory (AD) service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) or a [managed identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) to interact with Azure APIs.  
-The article will use service principle to create the AKS cluster. Assuming you have an exiting service principal to use with the AKS cluster.  
+We will use a service principle to create the AKS cluster, assuming you have an existing service principal with permission to dynamically create and manage other Azure resources such as an Azure load balancer or container registry (ACR).  
 If you don't have one, please make sure you have enough permisson and follow this [guide](https://docs.microsoft.com/en-us/azure/aks/kubernetes-service-principal) to create a new service principle.  
 
 
