@@ -12,6 +12,12 @@ function usage()
   echo_stderr "./setup-simple-cluster.sh <AKS_PERS_RESOURCE_GROUP> <AKS_CLUSTER_NAME> <AKS_PERS_STORAGE_ACCOUNT_NAME> <AKS_PERS_LOCATION> <AKS_PERS_SHARE_NAME> <DOCKER_USERNAME> <DOCKER_PASSWORD> <DOCKER_EMAIL>"  
 }
 
+function login()
+{
+    # login with a service principle
+    az login --service-principal --username $SP_APP_ID --password $SP_Client_Secret --tenant $SP_Tenant_ID
+}
+
 function createResourceGroup()
 {
     # Create a resource group
@@ -139,7 +145,8 @@ export DOCKER_USERNAME="$6"
 export DOCKER_PASSWORD="$7"
 export DOCKER_EMAIL="$8"
 export SP_APP_ID="$9"
-export SP_CLient_Secret="${10}"
+export SP_Client_Secret="${10}"
+export SP_Tenant_ID="${11}"
 
 echo $AKS_PERS_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_PERS_STORAGE_ACCOUNT_NAME
 
