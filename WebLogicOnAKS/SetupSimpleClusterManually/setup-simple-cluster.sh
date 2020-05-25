@@ -123,10 +123,10 @@ function cleanup()
 
 export SCRIPT_PWD=`pwd`
 
-if [ $# -lt 8 ]
+if [ $# -lt 10 ]
 then
     usage
-	exit 1
+    exit 1
 fi
 
 # Change these parameters as needed for your own environment
