@@ -61,6 +61,9 @@ routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
 If you run commands in your local environment, please run `az login` with you service principle.
 
 ```
+# APP_ID: app id of service principle
+# PASSWORD: client secret of service principle
+# TENANT_ID: tenant id of service principle
 az login --service-principal --username APP_ID --password PASSWORD --tenant TENANT_ID
 ```
 
@@ -563,13 +566,9 @@ The script will create a resource group, an AKS instance with 3 nodes,
 a storage account, a file share, and set up the WebLogic cluster:
 
 ```
-# login
-#az login
+az login --service-principal --username service-principle-app-id --password service-principle-client-secret --tenant service-principle-tenant-id
 
-# set subscription
-#az account set -s your-subscription
-
-bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email
+bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email service-principle-app-id service-principle-client-secret
 
 ```
 
