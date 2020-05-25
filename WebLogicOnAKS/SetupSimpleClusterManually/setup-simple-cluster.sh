@@ -139,8 +139,7 @@ export DOCKER_USERNAME="$6"
 export DOCKER_PASSWORD="$7"
 export DOCKER_EMAIL="$8"
 export SP_APP_ID="$9"
-export SP_CLient_Secret="${10}"
-echo $SP_CLient_Secret
+export SP_Client_Secret="${10}"
 
 echo $AKS_PERS_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_PERS_STORAGE_ACCOUNT_NAME
 
