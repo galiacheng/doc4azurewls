@@ -32,7 +32,6 @@ function createAndConnectToAKSCluster()
     --vm-set-type VirtualMachineScaleSets \
     --node-count 3 \
     --generate-ssh-keys \
-    --kubernetes-version 1.14.8 \
     --nodepool-name nodepool1 \
     --node-vm-size Standard_D4s_v3 \
     --location $AKS_PERS_LOCATION \
