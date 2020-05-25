@@ -128,7 +128,7 @@ function cleanup()
 
 export SCRIPT_PWD=`pwd`
 
-if [ $# -lt 10 ]
+if [ $# -lt 11 ]
 then
     usage
     exit 1
