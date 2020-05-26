@@ -26,6 +26,12 @@ Table of Contents
 
 This guide assumes the following prerequisites.
 
+### Existing service principle
+An AKS cluster requires either an [Azure Active Directory (AD) service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) or a [managed identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) to interact with Azure APIs.  
+We will use a service principle to create the AKS cluster, assuming you have an existing service principal with permission to dynamically create and manage other Azure resources such as an Azure load balancer or container registry (ACR).  
+If you don't have one, please make sure you have enough permisson and follow this [guide](https://docs.microsoft.com/en-us/azure/aks/kubernetes-service-principal) to create a new service principle.  
+
+
 There are two ways to complete the setup steps. You can use a local environment setup. This allows for the greatest flexiblity while requiring some setup effort. It is also possible to use the Azure Cloud Shell which is a browser based utility and runs on the Azure Portal. This option may be best for users already familiar with the utility and Azure. It is also suitable for users wanting to forego additional software installations on their local machine.
 
 ### Local Environment Setup
@@ -53,16 +59,13 @@ We will disable http-application-routing by default, if you want to
 enable http_application_routing, please follow [HTTP application
 routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
 
-If you run commands in your local environment, please run `az login` and
-`az account set` to login to Azure and set your working subscription
-first.
+If you run commands in your local environment, please run `az login` with your service principle.
 
 ```
-# login
-az login
-
-# set subscription
-az account set -s your-subscription
+# APP_ID: app id of service principle
+# PASSWORD: client secret of service principle
+# TENANT_ID: tenant id of service principle
+az login --service-principal --username APP_ID --password PASSWORD --tenant TENANT_ID
 ```
 
 Run the following commands to create the AKS cluster instance.
@@ -72,6 +75,8 @@ Run the following commands to create the AKS cluster instance.
 AKS_CLUSTER_NAME=WLSSimpleCluster
 AKS_PERS_RESOURCE_GROUP=wls-simple-cluster
 AKS_PERS_LOCATION=eastus
+SP_APP_ID=<service-principle-app-id>
+SP_Client-Secret=<service-principle-client-secret>
 
 az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 az aks create \
@@ -79,10 +84,11 @@ az aks create \
    --name $AKS_CLUSTER_NAME \
    --node-count 3 \
    --generate-ssh-keys \
-   --kubernetes-version 1.14.8 \
    --nodepool-name nodepool1 \
    --node-vm-size Standard_D4s_v3 \
-   --location $AKS_PERS_LOCATION
+   --location $AKS_PERS_LOCATION \
+   --service-principal $SP_APP_ID \
+   --client-secret $SP_Client-Secret
 ```
 
 After the deployment finishes, run the following command to connect to
@@ -560,13 +566,7 @@ The script will create a resource group, an AKS instance with 3 nodes,
 a storage account, a file share, and set up the WebLogic cluster:
 
 ```
-# login
-#az login
-
-# set subscription
-#az account set -s your-subscription
-
-bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email
+bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email service-principle-app-id service-principle-client-secret service-principle-tenant-id
 
 ```
 

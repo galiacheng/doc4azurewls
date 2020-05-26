@@ -12,6 +12,12 @@ function usage()
   echo_stderr "./setup-simple-cluster.sh <AKS_PERS_RESOURCE_GROUP> <AKS_CLUSTER_NAME> <AKS_PERS_STORAGE_ACCOUNT_NAME> <AKS_PERS_LOCATION> <AKS_PERS_SHARE_NAME> <DOCKER_USERNAME> <DOCKER_PASSWORD> <DOCKER_EMAIL>"  
 }
 
+function login()
+{
+    # login with a service principle
+    az login --service-principal --username $SP_APP_ID --password $SP_Client_Secret --tenant $SP_Tenant_ID
+}
+
 function createResourceGroup()
 {
     # Create a resource group
@@ -26,10 +32,11 @@ function createAndConnectToAKSCluster()
     --vm-set-type VirtualMachineScaleSets \
     --node-count 3 \
     --generate-ssh-keys \
-    --kubernetes-version 1.14.8 \
     --nodepool-name nodepool1 \
     --node-vm-size Standard_D4s_v3 \
-    --location $AKS_PERS_LOCATION
+    --location $AKS_PERS_LOCATION \
+    --service-principal $SP_APP_ID \
+    --client-secret $SP_Client_Secret
 
     # Connect to AKS cluster
     az aks get-credentials --resource-group $AKS_PERS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME
@@ -121,10 +128,10 @@ function cleanup()
 
 export SCRIPT_PWD=`pwd`
 
-if [ $# -lt 8 ]
+if [ $# -lt 11 ]
 then
     usage
-	exit 1
+    exit 1
 fi
 
 # Change these parameters as needed for your own environment
@@ -136,6 +143,9 @@ export AKS_PERS_SHARE_NAME="$5"
 export DOCKER_USERNAME="$6"
 export DOCKER_PASSWORD="$7"
 export DOCKER_EMAIL="$8"
+export SP_APP_ID="$9"
+export SP_Client_Secret="${10}"
+export SP_Tenant_ID="${11}"
 
 echo $AKS_PERS_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_PERS_STORAGE_ACCOUNT_NAME
 
