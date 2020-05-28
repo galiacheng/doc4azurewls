@@ -60,7 +60,7 @@ We will disable http-application-routing by default, if you want to
 enable http_application_routing, please follow [HTTP application
 routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
 
-If you run commands in your local environment, please run `az login` with your service principle.
+If you run commands in your local environment, please run `az login` with your service principal.
 
 ```
 # APP_ID: app id of service principle
