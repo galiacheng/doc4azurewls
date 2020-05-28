@@ -26,14 +26,15 @@ Table of Contents
 
 This guide assumes the following prerequisites.
 
-### Existing Service Principal
-An AKS cluster requires either an [Azure Active Directory (AD) service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) or a [managed identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) to interact with Azure APIs.
+### Service Principal for AKS
+An AKS cluster requires either an [Azure Active Directory (AD) service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) or a [managed identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) to interact with Azure resources.
 
-We will use a service principal to create the AKS cluster, assuming you have an existing service principal with permission to dynamically create and manage other Azure resources such as an Azure load balancer or container registry (ACR).  
-If you don't have one, please make sure you have enough permisson and follow this [guide](https://docs.microsoft.com/en-us/azure/aks/kubernetes-service-principal) to create a new service principle.  
+We will use a service principal to create an AKS cluster, assuming the precondition that you have an existing service principal with permission to dynamically create and manage other Azure resources such as an Azure load balancer or container registry (ACR).  
+If you don't have one, please make sure you have enough permisson and follow this [guide](https://docs.microsoft.com/en-us/azure/aks/kubernetes-service-principal) to create a new service principal.  
 
+### Environment for Setup
 
-There are two ways to complete the setup steps. You can use a local environment setup. This allows for the greatest flexiblity while requiring some setup effort. It is also possible to use the Azure Cloud Shell which is a browser based utility and runs on the Azure Portal. This option may be best for users already familiar with the utility and Azure. It is also suitable for users wanting to forego additional software installations on their local machine.
+There are two ways to setup an environment you will need to complete this guide. You can use a local environment setup. This allows for the greatest flexiblity while requiring some setup effort. It is also possible to use the Azure Cloud Shell which is a browser based utility and runs on the Azure Portal. This option may be best for users already familiar with the utility and Azure. It is also suitable for users wanting to forego additional software installations on their local machine.
 
 ### Local Environment Setup
 
