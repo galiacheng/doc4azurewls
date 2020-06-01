@@ -97,7 +97,7 @@ We will disable http-application-routing by default, if you want to
 enable http_application_routing, please follow [HTTP application
 routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
 
-If you run commands in your local environment, and you haven't login to az cli yet, please run `az login` first, ignore this if you run on Azure Cloud Shell.
+If you run commands in your local environment, and you haven't logged in to az cli yet, please run `az login` first, ignore this if you run on Azure Cloud Shell.
 
 Run the following commands to create the AKS cluster instance.
 
