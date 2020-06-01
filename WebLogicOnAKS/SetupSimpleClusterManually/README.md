@@ -199,11 +199,9 @@ STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_G
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-In order to mount the file share as a persistent volume, create a file named `pv.yaml` with
+In order to mount the file share as a persistent volume, we have created configuration file in [.config/pv.yaml](.config/pv.yaml) with
 the following content, use the `shareName` (weblogic in this example)
 and `secretName` (azure-secret in this example) from the above settings.
-
-You can also get the configuration from [.config/pv.yaml](.config/pv.yaml).  
 
 ```
 apiVersion: v1
@@ -229,12 +227,10 @@ spec:
   - nobrl
 ```
 
-Create a file named `pvc.yaml` with the following content for the
+We have created another configuration file [.config/pvc.yaml](.config/pvc.yaml) with the following content for the
 PersistentVolumeClaim.  Both `pv.yaml` and `pvc.yaml` have exactly the
 same content in the `metadata` and `storageClassName` attributes.  This is
-required.
-
-You can also get the configuration from [.config/pvc.yaml](.config/pvc.yaml). 
+required.  
 
 ```
 apiVersion: v1
@@ -398,7 +394,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    `weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv` directory
    to create the domain in the persistent volume we created previously.
 
-   First, create domain configuration and name it as domain1.yaml, by changing `create-domain-inputs.yaml` with the following values.  You can also get the configuration from [weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv/domain1.yaml](weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv/domain1.yaml).
+   First, we need set up domain configuration for WebLogic domain. We have created a file [weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv/domain1.yaml](weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv/domain1.yaml) by changing `create-domain-inputs.yaml` with the following values.  
 
    * `image`: Change to the DockerHub path of the image, with the value `store/oracle/weblogic:12.2.1.3`.
    * `imagePullSecretName`: Uncomment the line, and change it to the DockerHub credential you created previously, named `regcred` in this example.
@@ -510,8 +506,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
 4. In order to expose the power of WebLogic to the outside world, you
    must create `LoadBalancer` services for the Admin Server and the cluster.
 
-  Use the configuration file in [.config/admin-lb.yaml](.config/admin-lb.yaml) to create load banlancer for admin server.
-  Or you can create a file named `admin-lb.yaml` with the following content:
+  Use the configuration file in [.config/admin-lb.yaml](.config/admin-lb.yaml) to create load banlancer for admin server, with the following content:
 
    ```
    apiVersion: v1
@@ -539,8 +534,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    kubectl  apply -f admin-lb.yaml
    ```
 
-   Use the configuration file in [.config/cluster-lb.yaml](.config/cluster-lb.yaml) to create load banlancer for managed servers.
-   Or you can create a file named `cluster-lb.yaml` with the following content:
+   Use the configuration file in [.config/cluster-lb.yaml](.config/cluster-lb.yaml) to create load banlancer for managed servers with the following content:
 
    ```
    apiVersion: v1
@@ -599,6 +593,7 @@ The script will create a resource group, an AKS instance with 3 nodes,
 a storage account, a file share, and set up the WebLogic cluster:
 
 ```
+# cd automation
 bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email service-principle-app-id service-principle-client-secret service-principle-tenant-id
 
 ```
