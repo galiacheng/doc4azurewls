@@ -77,7 +77,7 @@ AKS_CLUSTER_NAME=WLSSimpleCluster
 AKS_PERS_RESOURCE_GROUP=wls-simple-cluster
 AKS_PERS_LOCATION=eastus
 SP_APP_ID=<service-principle-app-id>
-SP_Client_Secret=<service-principle-client-secret>
+SP_CLIENT_SECRECT=<service-principle-client-secret>
 
 az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 az aks create \
