@@ -156,8 +156,6 @@ installWebLogicOperator
 
 createWebLogicDomain
 
-cleanup
-
 
 
 
