@@ -60,7 +60,7 @@ An AKS cluster requires either an [Azure Active Directory (AD) service principal
 
 We will use a service principal to create an AKS cluster. You will need to make sure that you have an existing service principal with permission to dynamically create and manage other Azure resources such as an Azure load balancer or container registry (ACR). If you don't have one, please make sure you have enough permisson and follow the commands to create a new service principal. 
 
-If you run commands in your local environment, please run `az login` first， skip this if you run on Azure Cloud Shell.
+If you run commands in your local environment, please run `az login` first, skip this if you run on Azure Cloud Shell.
 
 ```
 SUBSCRIPTION_ID=<your-subscription-id>
@@ -95,6 +95,8 @@ Azure Kubernetes Service (AKS) cluster using the Azure CLI.
 We will disable http-application-routing by default, if you want to
 enable http_application_routing, please follow [HTTP application
 routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
+
+If you run commands in your local environment, and you haven't login to az cli yet, please run `az login` first, ignore this if you run on Azure Cloud Shell.
 
 Run the following commands to create the AKS cluster instance.
 
