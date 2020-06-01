@@ -9,7 +9,7 @@ function echo_stderr()
 #Function to display usage message
 function usage()
 {
-  echo_stderr "./setup-simple-cluster.sh <AKS_PERS_RESOURCE_GROUP> <AKS_CLUSTER_NAME> <AKS_PERS_STORAGE_ACCOUNT_NAME> <AKS_PERS_LOCATION> <AKS_PERS_SHARE_NAME> <DOCKER_USERNAME> <DOCKER_PASSWORD> <DOCKER_EMAIL>"  
+  echo_stderr "./setup-simple-cluster.sh <AKS_PERS_RESOURCE_GROUP> <AKS_CLUSTER_NAME> <AKS_PERS_STORAGE_ACCOUNT_NAME> <AKS_PERS_LOCATION> <AKS_PERS_SHARE_NAME> <DOCKER_USERNAME> <DOCKER_PASSWORD> <DOCKER_EMAIL> <SP_APP_ID> <SP_CLIENT_SECRECT> <SP_TENANT_ID>"  
 }
 
 function login()
@@ -148,6 +148,8 @@ export SP_Client_Secret="${10}"
 export SP_Tenant_ID="${11}"
 
 echo $AKS_PERS_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_PERS_STORAGE_ACCOUNT_NAME
+
+login
 
 createResourceGroup
 
