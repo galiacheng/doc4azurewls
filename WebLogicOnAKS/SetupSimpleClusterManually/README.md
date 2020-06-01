@@ -49,7 +49,7 @@ We have created configuration files to for azure file share and WebLogic domain 
 
 ```
 wget https://github.com/galiacheng/doc4azurewls/releases/download/1.0/wlsonaks.tar.gz
-tar -xvf wlsonaks.atr.gz wlsonaks
+tar -xvf wlsonaks.tar.gz wlsonaks
 
 ```
 
