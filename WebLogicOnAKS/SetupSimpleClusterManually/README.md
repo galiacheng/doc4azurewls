@@ -45,7 +45,7 @@ start the Azure Cloud Shell, please go to [Overview of Azure Cloud
 Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 
 ### Download Configuration files
-We have created configuration files to for azure file share and WebLogic domain set up, please download the latest release and unzip to your machine.
+We have created configuration files to for azure file share and WebLogic domain set up, please download the latest release and unzip to your machine, we will use the files in the following steps.
 
 ```
 
