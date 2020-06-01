@@ -48,8 +48,8 @@ Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 We have created configuration files to for azure file share and WebLogic domain set up, please download the latest release and unzip to your machine.
 
 ```
-wget 
-tar 
+wget https://github.com/galiacheng/doc4azurewls/releases/download/1.0/wlsonaks.tar.gz
+tar -xvf wlsonaks.atr.gz wlsonaks
 
 ```
 
