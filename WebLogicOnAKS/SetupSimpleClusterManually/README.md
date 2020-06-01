@@ -72,7 +72,7 @@ az login
 az account set -s $SUBSCRIPTION_ID
 
 ```
-Create service pricipal.  
+Create Service Principal with the following commands.  
 
 ```
 SP_NAME=myAKSClusterServicePrincipal
