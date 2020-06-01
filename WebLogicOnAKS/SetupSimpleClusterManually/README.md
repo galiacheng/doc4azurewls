@@ -504,7 +504,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
 4. In order to expose the power of WebLogic to the outside world, you
    must create `LoadBalancer` services for the Admin Server and the cluster.
 
-  Use the configuration file in [.config/admin-lb.yaml](.config/admin-lb.yaml) to create load banlancer for admin server, with the following content:
+  Use the configuration file in [.config/admin-lb.yaml](.config/admin-lb.yaml) with the following content to create load banlancer for admin server.
 
    ```
    apiVersion: v1
@@ -532,7 +532,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    kubectl  apply -f admin-lb.yaml
    ```
 
-   Use the configuration file in [.config/cluster-lb.yaml](.config/cluster-lb.yaml) to create load banlancer for managed servers with the following content:
+   Use the configuration file in [.config/cluster-lb.yaml](.config/cluster-lb.yaml) with the following content to create load banlancer for managed servers.
 
    ```
    apiVersion: v1
