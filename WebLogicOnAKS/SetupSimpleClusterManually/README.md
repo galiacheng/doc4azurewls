@@ -253,6 +253,7 @@ spec:
 Use the `kubectl` command to create the persistent volume and persistent volume claim.
 
 ```
+# cd .config
 kubectl apply -f pv.yaml
 kubectl apply -f pvc.yaml
 ```
@@ -310,6 +311,7 @@ subjects:
 Use the `kubectl` command to apply the role.
 
 ```
+# cd .config
 kubectl apply -f helm-grant-role.yaml
 ```
 
@@ -533,6 +535,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    Create the admin load balancer service using the following command.
 
    ```
+   # cd .config
    kubectl  apply -f admin-lb.yaml
    ```
 
@@ -561,6 +564,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    Create the cluster load balancer service using the following command.
 
    ```
+   # cd .config
    kubectl  apply -f cluster-lb.yaml
    ```
 
