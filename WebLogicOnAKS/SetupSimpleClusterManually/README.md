@@ -77,7 +77,7 @@ AKS_CLUSTER_NAME=WLSSimpleCluster
 AKS_PERS_RESOURCE_GROUP=wls-simple-cluster
 AKS_PERS_LOCATION=eastus
 SP_APP_ID=<service-principle-app-id>
-SP_CLIENT_SECRECT=<service-principle-client-secret>
+SP_CLIENT_SECRET=<service-principle-client-secret>
 
 az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 az aks create \
@@ -89,7 +89,7 @@ az aks create \
    --node-vm-size Standard_D4s_v3 \
    --location $AKS_PERS_LOCATION \
    --service-principal $SP_APP_ID \
-   --client-secret $SP_CLIENT_SECRECT
+   --client-secret $SP_CLIENT_SECRET
 ```
 
 After the deployment finishes, run the following command to connect to
