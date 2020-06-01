@@ -111,7 +111,7 @@ function createWebLogicDomain()
 
     # Create Weblogic Domain
     cd ${SCRIPT_PWD}/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv
-    ./create-domain.sh -i ${SCRIPT_PWD}/.config/domain1.yaml -o ~/azure/output -e -v
+    ./create-domain.sh -i ${SCRIPT_PWD}/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv/domain1.yaml -o ~/azure/output -e -v
 
     kubectl  apply -f ${SCRIPT_PWD}/.config/admin-lb.yaml
     kubectl  apply -f ${SCRIPT_PWD}/.config/cluster-lb.yaml
