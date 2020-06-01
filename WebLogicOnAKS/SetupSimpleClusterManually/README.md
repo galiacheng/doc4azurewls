@@ -89,7 +89,7 @@ az aks create \
    --node-vm-size Standard_D4s_v3 \
    --location $AKS_PERS_LOCATION \
    --service-principal $SP_APP_ID \
-   --client-secret $SP_Client-Secret
+   --client-secret $SP_CLIENT_SECRECT
 ```
 
 After the deployment finishes, run the following command to connect to
