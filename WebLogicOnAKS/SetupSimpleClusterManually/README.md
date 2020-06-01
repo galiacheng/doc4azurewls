@@ -375,7 +375,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    * `image`: Change to the DockerHub path of the image, with the value `store/oracle/weblogic:12.2.1.3`.
    * `imagePullSecretName`: Uncomment the line, and change it to the DockerHub credential you created previously, named `regcred` in this example.
    * `exposeAdminNodePort`: Set to true, as we will use the Admin Console Portal to manage WebLogic Server.
-   * `persistentVolumeClaimName`: We will persist data to azurefile in this example.
+   * `persistentVolumeClaimName`: We will persist data to `azurefile` in this example.
    
    Here is the updated example snippet:
 
