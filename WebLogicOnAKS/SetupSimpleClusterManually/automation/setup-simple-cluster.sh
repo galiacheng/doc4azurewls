@@ -120,6 +120,7 @@ function createWebLogicDomain()
     kubectl  get svc
 }
 
+cd ../
 export SCRIPT_PWD=`pwd`
 
 if [ $# -lt 11 ]
