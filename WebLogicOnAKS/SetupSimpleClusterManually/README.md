@@ -392,15 +392,13 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    `weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv` directory
    to create the domain in the persistent volume we created previously.
 
-   First, create domain configuration and name it as domain1.yaml, by changing `create-domain-inputs.yaml` with the following values.
+   First, create domain configuration and name it as domain1.yaml, by changing `create-domain-inputs.yaml` with the following values.  You can also get the configuration from [weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv/domain1.yaml](weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv/domain1.yaml).
 
    * `image`: Change to the DockerHub path of the image, with the value `store/oracle/weblogic:12.2.1.3`.
    * `imagePullSecretName`: Uncomment the line, and change it to the DockerHub credential you created previously, named `regcred` in this example.
    * `exposeAdminNodePort`: Set to true, as we will use the Admin Console Portal to manage WebLogic Server.
    * `persistentVolumeClaimName`: We will persist data to `azurefile` in this example.
 
-   You can also get the file from [weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv/domain1.yaml](weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv/domain1.yaml). 
-   
    Here is the updated example snippet:
 
    ```
