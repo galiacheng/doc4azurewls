@@ -15,7 +15,7 @@ function usage()
 function login()
 {
     # login with a service principle
-    az login --service-principal --username $SP_APP_ID --password $SP_Client_Secret --tenant $SP_Tenant_ID
+    az login --service-principal --username $SP_APP_ID --password $SP_CLIENT_SECRET --tenant $SP_TENANT_ID
 }
 
 function createResourceGroup()
@@ -36,7 +36,7 @@ function createAndConnectToAKSCluster()
     --node-vm-size Standard_D4s_v3 \
     --location $AKS_PERS_LOCATION \
     --service-principal $SP_APP_ID \
-    --client-secret $SP_Client_Secret
+    --client-secret $SP_CLIENT_SECRET
 
     # Connect to AKS cluster
     az aks get-credentials --resource-group $AKS_PERS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME
@@ -66,16 +66,16 @@ function createFileShare()
     --from-literal=azurestorageaccountkey=$STORAGE_KEY
 
     # Mount the file share as a volume
-    kubectl apply -f ${SCRIPT_PWD}/pv.yaml
+    kubectl apply -f ${SCRIPT_PWD}/.config/pv.yaml
     kubectl get pv azurefile -o yaml
-    kubectl apply -f ${SCRIPT_PWD}/pvc.yaml
+    kubectl apply -f ${SCRIPT_PWD}/.config/pvc.yaml
     kubectl get pvc azurefile -o yaml
 }
 
 function installWebLogicOperator()
 {
     # Grant the Helm service account the cluster-admin role
-    kubectl apply -f ${SCRIPT_PWD}/grant-helm-role.yaml
+    kubectl apply -f ${SCRIPT_PWD}/.config/grant-helm-role.yaml
 
     # Print pod stuats
     kubectl -n kube-system get pods
@@ -99,7 +99,6 @@ function installWebLogicOperator()
 function createWebLogicDomain()
 {
     # Create WebLogic Domain Credentials, please change weblogic username, password, domain name as you expected.
-    git clone https://github.com/oracle/weblogic-kubernetes-operator
     cd ${SCRIPT_PWD}/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain-credentials
     ./create-weblogic-credentials.sh -u weblogic -p welcome1 -d domain1
 
@@ -112,18 +111,13 @@ function createWebLogicDomain()
 
     # Create Weblogic Domain
     cd ${SCRIPT_PWD}/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-weblogic-domain/domain-home-on-pv
-    ./create-domain.sh -i ${SCRIPT_PWD}/domain1.yaml -o ~/azure/output -e -v
+    ./create-domain.sh -i ${SCRIPT_PWD}/.config/domain1.yaml -o ~/azure/output -e -v
 
-    kubectl  apply -f ${SCRIPT_PWD}/admin-lb.yaml
-    kubectl  apply -f ${SCRIPT_PWD}/cluster-lb.yaml
+    kubectl  apply -f ${SCRIPT_PWD}/.config/admin-lb.yaml
+    kubectl  apply -f ${SCRIPT_PWD}/.config/cluster-lb.yaml
 
     # Print ip address
     kubectl  get svc
-}
-
-function cleanup()
-{
-    rm -rf ${SCRIPT_PWD}/weblogic-kubernetes-operator
 }
 
 export SCRIPT_PWD=`pwd`
@@ -144,8 +138,8 @@ export DOCKER_USERNAME="$6"
 export DOCKER_PASSWORD="$7"
 export DOCKER_EMAIL="$8"
 export SP_APP_ID="$9"
-export SP_Client_Secret="${10}"
-export SP_Tenant_ID="${11}"
+export SP_CLIENT_SECRET="${10}"
+export SP_TENANT_ID="${11}"
 
 echo $AKS_PERS_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_PERS_STORAGE_ACCOUNT_NAME
 
