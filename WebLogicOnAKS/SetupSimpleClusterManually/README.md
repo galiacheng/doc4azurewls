@@ -284,7 +284,7 @@ The official Oracle documentation for the Operator is available at this location
 [https://oracle.github.io/weblogic-kubernetes-operator/](https://oracle.github.io/weblogic-kubernetes-operator/).
 
 Kubernetes Operators use [Helm](https://helm.sh/) to manage Kubernetes
-applications. We have created a file [.config/helm-grant-role.yaml](.config/helm-grant-role.yaml) with the following content to grant the Helm service account with the
+applications. We have created a file [.config/grant-helm-role.yaml](.config/grant-helm-role.yaml) with the following content to grant the Helm service account with the
 cluster-admin role.
 
 ```
@@ -306,7 +306,7 @@ Use the `kubectl` command to apply the role.
 
 ```
 # cd .config
-kubectl apply -f helm-grant-role.yaml
+kubectl apply -f grant-helm-role.yaml
 ```
 
 Install the WebLogic Operator, the Operator’s Helm chart is located in the
