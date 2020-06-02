@@ -1,0 +1,24 @@
+# Copyright (c) 2018, 2019, Oracle Corporation and/or its affiliates. All rights reserved.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+{{- if eq .Values.type "TRAEFIK" }}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.wlsDomain.domainUID }}-traefik
+  namespace: {{ .Release.Namespace }}
+  labels:
+    weblogic.resourceVersion: domain-v2
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: '{{ .Values.traefik.hostname }}'
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: '{{ .Values.wlsDomain.domainUID }}-cluster-{{ .Values.wlsDomain.clusterName | lower | replace "_" "-" }}'
+          servicePort: {{ .Values.wlsDomain.managedServerPort }}
+{{- end }}
