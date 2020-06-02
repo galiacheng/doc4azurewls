@@ -1,6 +1,8 @@
-This article introduces how to run Azure WebLogic Offer sub-template with az cli.
 
 # Run Sub-tempalte with Az CLI
+
+This article introduces how to run Azure WebLogic Offer sub-template with az cli.
+
 
 Table of Contents
 =================
@@ -15,12 +17,14 @@ Table of Contents
 All the sub tempates will be applied to an existing WebLogic Server instance.  If you don't have one, please create a new instance from Azure portal, links to WebLogic offers are available from [Oracle WebLogic Server 12.2.1.3](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview).  
 
 ### Environment for Setup
+
 * [Git](https://git-scm.com/downloads), use `git --version` to test if `git` works.
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure), use `az --version` to test if `az` works.
 * [JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), use `java -version` to test if `java` works. 
 * [maven](https://maven.apache.org/download.cgi), use `mvn --version` to test if `mvn` works. 
 
 ### Clone and Build WebLogic Server Offer
+
 Clone the repository from address of the following steps, and run this command to buid the template.  
 
 ```
