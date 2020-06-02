@@ -2,11 +2,17 @@ This article introduces how to run Azure WebLogic Offer sub-template with az cli
 
 # Run Sub-tempalte with Az CLI
 
+Table of Contents
+=================
+
+[Prerequisites](#prerequisites)  
+[Database Template](#database-template) 
+
 ## Prerequisites
 
 ### WebLogic Server Instance
 
-All the sub tempates will be applied to existing WebLogic Server instance.  If you don't have one, please create a new instance from Azure portal, links to WebLogic offers are available from [Oracle WebLogic Server 12.2.1.3](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview).  
+All the sub tempates will be applied to an existing WebLogic Server instance.  If you don't have one, please create a new instance from Azure portal, links to WebLogic offers are available from [Oracle WebLogic Server 12.2.1.3](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview).  
 
 ### Environment for Setup
 * [Git](https://git-scm.com/downloads), use `git --version` to test if `git` works.
@@ -18,12 +24,12 @@ All the sub tempates will be applied to existing WebLogic Server instance.  If y
 Clone the repository from address of the following steps, and run this command to buid the template.  
 
 ```
-mvn clean install -Ddev
+mvn clean install
 ```
 
 Templates will output to target folder, we will use sub tempaltes in target/arm/nestedtemplates to deploy service into existing WebLogic Server instance.  
 
-## Database template
+## Database Template
 
 ### Before you begin
 
@@ -31,15 +37,35 @@ To apply database to Weblogic Server, you must have an existing database instanc
 
 We will use Postgresql in the sample parameters, please change the value to your instance.  
 
-### WebLogic Server with Admin Server
-Repo: https://github.com/wls-eng/arm-oraclelinux-wls-admin  
-Sub template: https://github.com/wls-eng/arm-oraclelinux-wls-admin/blob/master/src/main/arm/nestedtemplates/dbTemplate.json
+### Deploy Database Template
 
-Create parameters.json with the following variables, and change the value to your value.
+Clone and build admin repository with command:
+
+```
+# Admin offer
+git clone https://github.com/wls-eng/arm-oraclelinux-wls-admin
+# Cluster offer 
+# git clone https://github.com/wls-eng/arm-oraclelinux-wls-cluster
+# Dynamic Cluster offer
+# git clone https://github.com/wls-eng/arm-oraclelinux-wls-dynamic-cluster
+
+cd arm-oraclelinux-wls-admin
+# cd arm-oraclelinux-wls-cluster
+# cd arm-oraclelinux-wls-dynamci-cluster
+mvn clean install
+
+cd target/arm/nestedtemplates
+```
+
+Create parameters.json with the following variables, and change the value to your value, or you can find the sample parameters from [parameters/db-parameters-admin.json](parameters/db-parameters-admin.json).
+ 
+
+Please change _artifactsLocation to `https://raw.githubusercontent.com/wls-eng/arm-oraclelinux-wls-cluster/master/arm-oraclelinux-wls-cluster/src/main/arm/` for cluster offer and `https://raw.githubusercontent.com/wls-eng/arm-oraclelinux-wls-dynamic-cluster/master/arm-oraclelinux-wls-dynamic-cluster/src/main/arm/` for dynamic cluster offer.
+
 ```
 {
     "_artifactsLocation":{
-        "value": "https://raw.githubusercontent.com/galiacheng/arm-oraclelinux-wls-admin/deploy/src/main/arm/"
+        "value": "https://raw.githubusercontent.com/wls-eng/arm-oraclelinux-wls-admin/master/src/main/arm/"
       },
       "_artifactsLocationSasToken":{
         "value": ""
@@ -221,10 +247,5 @@ This is an example output of successful deployment.
 }
 
 ```
-
-### WebLogic Server Cluster
-
-### WebLogic Server Dynamic Cluster
-
 
 

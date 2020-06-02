@@ -1,6 +1,6 @@
 {
     "_artifactsLocation":{
-        "value": "https://raw.githubusercontent.com/galiacheng/arm-oraclelinux-wls-admin/deploy/src/main/arm/"
+        "value": "https://raw.githubusercontent.com/wls-eng/arm-oraclelinux-wls-admin/master/src/main/arm/"
       },
       "_artifactsLocationSasToken":{
         "value": ""
