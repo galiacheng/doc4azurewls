@@ -1,0 +1,32 @@
+{
+    "_artifactsLocation":{
+        "value": "https://raw.githubusercontent.com/galiacheng/arm-oraclelinux-wls-admin/deploy/src/main/arm/"
+      },
+      "_artifactsLocationSasToken":{
+        "value": ""
+      },
+      "location": {
+        "value": "eastus"
+      },
+      "databaseType": {
+        "value": "postgresql"
+      },
+      "dsConnectionURL": {
+        "value": "jdbc:postgresql://oraclevm.postgres.database.azure.com:5432/postgres"
+      },
+      "dbPassword": {
+        "value": "Secret123!"
+      },
+      "dbUser": {
+        "value": "weblogic@oraclevm"
+      },
+      "jdbcDataSourceName": {
+        "value": "jdbc/WebLogicCafeDB"
+      },
+      "wlsPassword": {
+        "value": "APB9faTHAPB9faTH"
+      },
+      "wlsUserName": {
+        "value": "weblogic"
+      }
+    }
