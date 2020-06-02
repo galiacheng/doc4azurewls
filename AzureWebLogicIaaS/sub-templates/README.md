@@ -43,7 +43,7 @@ We will use Postgresql in the sample parameters, please change the value to your
 
 ### Deploy Database Template
 
-Clone and build admin repository with command:
+Clone and build repository with command:
 
 ```
 # Admin offer
