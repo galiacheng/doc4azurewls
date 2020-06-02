@@ -45,7 +45,7 @@ start the Azure Cloud Shell, please go to [Overview of Azure Cloud
 Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 
 ### Download Configuration files
-We have created configuration files to for azure file share and WebLogic domain set up, please download the latest release and unzip to your machine.
+We have created configuration files to for azure file share and WebLogic domain set up, please download the latest release and unzip to your machine, we will use the files in the following steps.
 
 ```
 
@@ -97,7 +97,7 @@ We will disable http-application-routing by default, if you want to
 enable http_application_routing, please follow [HTTP application
 routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
 
-If you run commands in your local environment, and you haven't login to az cli yet, please run `az login` first, ignore this if you run on Azure Cloud Shell.
+If you run commands in your local environment, and you haven't logged in to az cli yet, please run `az login` first, ignore this if you run on Azure Cloud Shell.
 
 Run the following commands to create the AKS cluster instance.
 
@@ -284,10 +284,8 @@ The official Oracle documentation for the Operator is available at this location
 [https://oracle.github.io/weblogic-kubernetes-operator/](https://oracle.github.io/weblogic-kubernetes-operator/).
 
 Kubernetes Operators use [Helm](https://helm.sh/) to manage Kubernetes
-applications. Create a file named `helm-grant-role.yaml` with the following content to grant the Helm service account with the
+applications. We have created a file [.config/grant-helm-role.yaml](.config/grant-helm-role.yaml) with the following content to grant the Helm service account with the
 cluster-admin role.
-
-You can also get the configuration from [.config/helm-grant-role.yaml](.config/helm-grant-role.yaml). 
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -308,7 +306,7 @@ Use the `kubectl` command to apply the role.
 
 ```
 # cd .config
-kubectl apply -f helm-grant-role.yaml
+kubectl apply -f grant-helm-role.yaml
 ```
 
 Install the WebLogic Operator, the Operator’s Helm chart is located in the
@@ -506,7 +504,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
 4. In order to expose the power of WebLogic to the outside world, you
    must create `LoadBalancer` services for the Admin Server and the cluster.
 
-  Use the configuration file in [.config/admin-lb.yaml](.config/admin-lb.yaml) to create load banlancer for admin server, with the following content:
+  Use the configuration file in [.config/admin-lb.yaml](.config/admin-lb.yaml) with the following content to create load banlancer for admin server.
 
    ```
    apiVersion: v1
@@ -534,7 +532,7 @@ We will use the sample scripts in the Weblogic Operator repository to setup the 
    kubectl  apply -f admin-lb.yaml
    ```
 
-   Use the configuration file in [.config/cluster-lb.yaml](.config/cluster-lb.yaml) to create load banlancer for managed servers with the following content:
+   Use the configuration file in [.config/cluster-lb.yaml](.config/cluster-lb.yaml) with the following content to create load banlancer for managed servers.
 
    ```
    apiVersion: v1
