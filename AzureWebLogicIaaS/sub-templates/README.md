@@ -55,7 +55,7 @@ git clone https://github.com/wls-eng/arm-oraclelinux-wls-admin
 
 cd arm-oraclelinux-wls-admin
 # cd arm-oraclelinux-wls-cluster
-# cd arm-oraclelinux-wls-dynamci-cluster
+# cd arm-oraclelinux-wls-dynamic-cluster
 mvn clean install
 
 cd target/arm/nestedtemplates
