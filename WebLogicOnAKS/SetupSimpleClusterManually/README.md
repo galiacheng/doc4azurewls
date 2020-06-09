@@ -36,7 +36,7 @@ There are two ways to setup an environment you will need to complete this guide.
 * [Git](https://git-scm.com/downloads), use `git --version` to test if `git` works.
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure), use `az --version` to test if `az` works.
 * [kubectl](https://kubernetes-io-vnext-staging.netlify.com/docs/tasks/tools/install-kubectl/), use `kubectl --version` to test if `kubectl` works.
-* [helm](https://helm.sh/docs/intro/install/), version 3.1 and above, use `helm version` to test `helm` version.
+* [helm](https://helm.sh/docs/intro/install/), version 3.1 and above, use `helm version` to check the `helm` version.
 
 #### Azure Cloud Shell
 
@@ -54,7 +54,6 @@ tar -xvf wlsonaks.tar.gz
 cd SetupSimpleClusterManually
 
 ```
-
 
 ## Create Service Principal for AKS
 An AKS cluster requires either an [Azure Active Directory (AD) service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) or a [managed identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) to interact with Azure resources.
