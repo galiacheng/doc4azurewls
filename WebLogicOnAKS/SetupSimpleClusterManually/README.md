@@ -269,9 +269,8 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      2d21h
 ```
 
-Carefully inspect the output and verify it matches the above.  `ACCESS
+Carefully inspect the output and verify it matches the above. `ACCESS
 MODES`, `CLAIM`, and `STORAGECLASS` are vital.
-
 
 ## Install WebLogic Operator
 
@@ -283,8 +282,7 @@ The official Oracle documentation for the Operator is available at this location
 [https://oracle.github.io/weblogic-kubernetes-operator/](https://oracle.github.io/weblogic-kubernetes-operator/).
 
 Kubernetes Operators use [Helm](https://helm.sh/) to manage Kubernetes
-applications. We have created a file [.config/grant-helm-role.yaml](.config/grant-helm-role.yaml) with the following content to grant the Helm service account with the
-cluster-admin role.
+applications. We have provided a file [.config/grant-helm-role.yaml](.config/grant-helm-role.yaml) with the following content to grant the Helm service account with the cluster-admin role (the content is only for reference, you need not alter the file).
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
