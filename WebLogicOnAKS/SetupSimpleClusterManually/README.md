@@ -178,7 +178,7 @@ az storage account create \
 ```
 
 Now we need to create a file share. We need a storage connection string to create the
-file share.  Run the `show-connection-string` command to get connection
+file share. Run the `show-connection-string` command to get connection
 string, then create the share with `az storage share create`, as shown
 here.
 
@@ -201,9 +201,7 @@ STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_G
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-In order to mount the file share as a persistent volume, we have created configuration file in [.config/pv.yaml](.config/pv.yaml) with
-the following content, use the `shareName` (weblogic in this example)
-and `secretName` (azure-secret in this example) from the above settings.
+In order to mount the file share as a persistent volume, we have provided a configuration file in [.config/pv.yaml](.config/pv.yaml) with the following content (the content is only for reference, you need not alter the file). It uses the `shareName` (weblogic in this example) and `secretName` (azure-secret in this example) from the above settings.
 
 ```
 apiVersion: v1
