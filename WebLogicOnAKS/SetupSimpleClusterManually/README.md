@@ -227,10 +227,9 @@ spec:
   - nobrl
 ```
 
-We have created another configuration file [.config/pvc.yaml](.config/pvc.yaml) with the following content for the
-PersistentVolumeClaim.  Both `pv.yaml` and `pvc.yaml` have exactly the
-same content in the `metadata` and `storageClassName` attributes.  This is
-required.  
+We have provided another configuration file [.config/pvc.yaml](.config/pvc.yaml) with the following content for the
+PersistentVolumeClaim (the content is only for reference, you need not alter the file).  Both `pv.yaml` and `pvc.yaml` have exactly the
+same content in the `metadata` and `storageClassName` attributes. This is required.  
 
 ```
 apiVersion: v1
