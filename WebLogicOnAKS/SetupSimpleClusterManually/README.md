@@ -45,7 +45,7 @@ start the Azure Cloud Shell, please go to [Overview of Azure Cloud
 Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 
 ### Download Configuration files
-We have created configuration files to for azure file share and WebLogic domain set up, please download the latest release and unzip to your machine, we will use the files in the following steps.
+We have created configuration files for an Azure file share and WebLogic domain set up. Please download the latest release of this guide and unzip to your environment. We will use the files in the following steps.
 
 ```
 
@@ -58,20 +58,22 @@ cd SetupSimpleClusterManually
 ## Create Service Principal for AKS
 An AKS cluster requires either an [Azure Active Directory (AD) service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) or a [managed identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) to interact with Azure resources.
 
-We will use a service principal to create an AKS cluster. You will need to make sure that you have an existing service principal with permission to dynamically create and manage other Azure resources such as an Azure load balancer or container registry (ACR). If you don't have one, please make sure you have enough permisson and follow the commands to create a new service principal. 
+We will use a service principal to create an AKS cluster. Follow the commands below to create a new service principal.
 
-If you run commands in your local environment, please run `az login` first, skip this if you run on Azure Cloud Shell.
+If you run commands in your local environment, please run `az login` first and set up the active subscription. Skip these steps if you run on the Azure Cloud Shell.
 
 ```
-SUBSCRIPTION_ID=<your-subscription-id>
 # Login
 az login
+
+SUBSCRIPTION_ID=<your-subscription-id>
 
 # Set your working subscription
 az account set -s $SUBSCRIPTION_ID
 
 ```
-Create Service Principal with the following commands.  
+
+Create the new Service Principal with the following commands.  
 
 ```
 SP_NAME=myAKSClusterServicePrincipal
@@ -79,9 +81,9 @@ SP_NAME=myAKSClusterServicePrincipal
 # Create Service Principal
 az ad sp create-for-rbac --skip-assignment --name $SP_NAME
 
-# Copy the output to a file, we will use it to create AKS
-# Grant your service principal with Contributor role 
-# Replace <appId> from output of last command 
+# Copy the output to a file, we will use it to 
+# grant your service principal with a contributor role in AKS 
+# Use the <appId> from the output of the last command 
 az role assignment create --assignee <appId> --role Contributor
 ```
 
