@@ -79,10 +79,13 @@ Create the new Service Principal with the following commands.
 SP_NAME=myAKSClusterServicePrincipal
 
 # Create Service Principal
+
 az ad sp create-for-rbac --skip-assignment --name $SP_NAME
 
 # Copy the output to a file, we will use it to 
-# grant your service principal with a contributor role in AKS 
+# grant your service principal with a contributor role in AKS.
+# Specifically we will need the app ID and client secret later.
+
 # Use the <appId> from the output of the last command 
 az role assignment create --assignee <appId> --role Contributor
 ```
@@ -98,8 +101,6 @@ We will disable http-application-routing by default, if you want to
 enable http_application_routing, please follow [HTTP application
 routing](https://docs.microsoft.com/en-us/azure/aks/http-application-routing).
 
-If you run commands in your local environment, and you haven't logged in to az cli yet, please run `az login` first, ignore this if you run on Azure Cloud Shell.
-
 Run the following commands to create the AKS cluster instance.
 
 ```
@@ -107,8 +108,8 @@ Run the following commands to create the AKS cluster instance.
 AKS_CLUSTER_NAME=WLSSimpleCluster
 AKS_PERS_RESOURCE_GROUP=wls-simple-cluster
 AKS_PERS_LOCATION=eastus
-SP_APP_ID=<service-principle-app-id>
-SP_CLIENT_SECRET=<service-principle-client-secret>
+SP_APP_ID=<service-principal-app-id>
+SP_CLIENT_SECRET=<service-principal-client-secret>
 
 az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 az aks create \
