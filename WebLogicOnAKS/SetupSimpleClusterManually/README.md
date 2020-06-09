@@ -625,7 +625,7 @@ Start deployment:
 
 1. Go to Deplyments
 2. Click Control
-3. select webtestapp
+3. Select webtestapp
 4. Start
 5. Servicing all requests
 
