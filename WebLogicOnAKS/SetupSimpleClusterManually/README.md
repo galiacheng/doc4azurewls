@@ -591,6 +591,8 @@ The script will create a resource group, an AKS instance with 3 nodes,
 a storage account, a file share, and set up the WebLogic cluster:
 
 ```
+# Before running the script, please set up environment according to #Prerequisites.
+# Need a service priciple to create AKS.
 # cd automation
 bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email service-principle-app-id service-principle-client-secret service-principle-tenant-id
 
