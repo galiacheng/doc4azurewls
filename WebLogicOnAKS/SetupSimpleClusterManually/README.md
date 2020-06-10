@@ -44,7 +44,7 @@ The Azure Cloud Shell already has the necessary prerequisites installed. To
 start the Azure Cloud Shell, please go to [Overview of Azure Cloud
 Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 
-#### Download Configuration files
+### Download Configuration files
 We have created configuration files for an Azure file share and WebLogic domain set up. Please download the latest release of this guide and unzip to your environment. We will use the files in the following steps.
 
 ```
@@ -55,7 +55,7 @@ cd SetupSimpleClusterManually
 
 ```
 
-#### Create Service Principal for AKS
+### Create Service Principal for AKS
 An AKS cluster requires either an [Azure Active Directory (AD) service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) or a [managed identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) to interact with Azure resources.
 
 We will use a service principal to create an AKS cluster. Follow the commands below to create a new service principal.
