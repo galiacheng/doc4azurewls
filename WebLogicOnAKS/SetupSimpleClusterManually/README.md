@@ -602,6 +602,8 @@ a storage account, a file share, and set up the WebLogic cluster. The following 
    * `service-principal-tenant-id`: The tenant ID from the [Create Service Principal for AKS](#create-service-principal-for-aks) section.   
 
 ```
+# Before running the script, please set up environment according to #Prerequisites.
+# Need a service priciple to create AKS.
 # cd automation
 bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email service-principle-app-id service-principal-client-secret service-principal-tenant-id
 
@@ -651,11 +653,11 @@ You may optionally test the cluster by deploying the simple sample application i
 
 Next you will need to start the application:
 
-1. Go to Deployments.
-2. Click Control.
-3. Select webtestapp.
-4. Click Start -> Servicing all requests.
-5. Click Yes.
+1. Go to Deplyments
+2. Click Control
+3. Select webtestapp
+4. Start
+5. Servicing all requests
 
 After successful deployment, go to the application through the domain1-cluster-1-lb external IP.
 
