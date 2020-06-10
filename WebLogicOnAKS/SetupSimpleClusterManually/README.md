@@ -634,16 +634,18 @@ In the example, the URL to access the admin server is: http://52.188.176.103:700
 
 ## Deploy Sample Application
 
-Go to Admin server and deploy webtestapp.war.
+You may optionally test the cluster by deploying the simple sample application included in this guide:
 
-1. Go to admin server console, click "Lock & Edit"
-2. Click Deployments
-3. Click Install
-4. Select file webtestapp.war
-5. Next. Install this deployment as an application
-6. Next. Select cluster-1 and All servers in the cluster
-7. Keep configuration as default and click Finish
-8. Activate Changes
+1. Go to the admin server console, click "Lock & Edit".
+2. Click Deployments.
+3. Click Install.
+4. Click Upload your file(s).
+5. For the Deployment Archive, click "Choose File".
+6. Go to where this guide is on your local file system (if you are using the Cloud Shell you will need to download the guide locally). Select the file webtestapp.war.
+7. Click Next. Choose 'Install this deployment as an application'.
+8. Click Next. Select cluster-1 and All servers in the cluster.
+9. Accept the defaults in the next screens and click Finish.
+10. Click Activate Changes
 ![Deploy Application](resources/screenshot-deploy-test-app.PNG)
 
 Start deployment:
