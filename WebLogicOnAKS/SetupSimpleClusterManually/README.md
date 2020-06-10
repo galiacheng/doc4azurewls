@@ -37,6 +37,7 @@ There are two ways to setup an environment you will need to complete this guide.
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure), use `az --version` to test if `az` works.
 * [kubectl](https://kubernetes-io-vnext-staging.netlify.com/docs/tasks/tools/install-kubectl/), use `kubectl version` to test if `kubectl` works.
 * [helm](https://helm.sh/docs/intro/install/), version 3.1 and above, use `helm version` to check the `helm` version.
+* wget (`brew install wget` on macOS).
 
 #### Azure Cloud Shell
 
