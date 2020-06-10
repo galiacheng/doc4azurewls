@@ -645,18 +645,19 @@ You may optionally test the cluster by deploying the simple sample application i
 7. Click Next. Choose 'Install this deployment as an application'.
 8. Click Next. Select cluster-1 and All servers in the cluster.
 9. Accept the defaults in the next screens and click Finish.
-10. Click Activate Changes
+10. Click Activate Changes.
+
 ![Deploy Application](resources/screenshot-deploy-test-app.PNG)
 
-Start deployment:
+Next you will need to start the application:
 
-1. Go to Deplyments
-2. Click Control
-3. select webtestapp
-4. Start
-5. Servicing all requests
+1. Go to Deployments.
+2. Click Control.
+3. Select webtestapp.
+4. Click Start -> Servicing all requests.
+5. Click Yes.
 
-After successful deployment, go to the application with domain1-cluster-1-lb external ip.
+After successful deployment, go to the application through the domain1-cluster-1-lb external IP.
 
 ```
 kubectl  get svc domain1-cluster-1-lb
@@ -665,10 +666,9 @@ NAME                   TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)    
 domain1-cluster-1-lb   LoadBalancer   10.0.112.43   104.45.176.215   8001:30874/TCP   2d18h
 ```
 
-Application address is : http://104.45.176.215:8001/webtestapp
+In the example, the application address is: http://104.45.176.215:8001/webtestapp.
 
-The test application will list the server host and server ip in the
-page.
+The test application will list the server host and server IP on the page.
 
 ## Access WebLogic Logs
 
