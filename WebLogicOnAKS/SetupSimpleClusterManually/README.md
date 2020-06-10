@@ -90,6 +90,8 @@ az ad sp create-for-rbac --skip-assignment --name $SP_NAME
 az role assignment create --assignee <appId> --role Contributor
 ```
 
+*The following sections of the guide will take you step-by-step through the process of setting up a WebLogic cluster on AKS - remaining as close as possible to a native Kubernetes experience. This allows you to understand and customize each step. If you wish to have a more automated experience that abstracts some lower level details, you can skip to the [Automation](#automation) section.*
+
 ## Create Azure Kubernetes Service (AKS) Cluster
 
 AKS is a managed Kubernetes service that lets you quickly deploy and
