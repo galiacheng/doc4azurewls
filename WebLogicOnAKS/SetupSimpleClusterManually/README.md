@@ -591,9 +591,9 @@ a storage account, a file share, and set up the WebLogic cluster. The following 
 
    * `new-resource-group-name`: A resource group name such as `wls-simple-cluster-group`.
    * `new-aks-name`: An AKS cluster name such as `wls-simple-cluster`.
-   * `new-storage-account-name`: Set to true, as we will use the Admin Console Portal to manage WebLogic Server.
+   * `new-storage-account-name`: A storage account name such as `wlssimplestorageacct`.
    * `location`: An Azure region such as `eastus`.
-   * `file-share-name`: We will persist data to `azurefile` in this example.
+   * `file-share-name`: A file share name such as `azurefile`.
    * `docker-username`: The Docker Hub username from the [Docker Hub](#docker-hub) section.
    * `docker-password`: The Docker Hub password from the [Docker Hub](#docker-hub) section.
    * `docker-email`: The Docker Hub email from the [Docker Hub](#docker-hub) section.
