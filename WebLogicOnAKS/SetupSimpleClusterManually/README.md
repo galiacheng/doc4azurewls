@@ -609,12 +609,28 @@ bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-ac
 
 The script will print the Admin Server IP address after successful deployment.
 
-If the external IP status is pending, you can also get the server
-information with the following command:
+If the external IP status is pending, you can also get the server information with the following command:
 
 ```
 kubectl get svc --watch
 ```
+
+It may take you up to 20 minutes to deploy all pods, please wait and make sure everything is ready. The final example output is as following:
+
+   ```
+   NAME                               TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)              AGE
+   domain1-admin-server               ClusterIP      None          <none>           30012/TCP,7001/TCP   2d20h
+   domain1-admin-server-external      NodePort       10.0.182.50   <none>           7001:30701/TCP       2d20h
+   domain1-admin-server-external-lb   LoadBalancer   10.0.67.79    52.188.176.103   7001:32227/TCP       2d20h
+   domain1-cluster-1-lb               LoadBalancer   10.0.112.43   104.45.176.215   8001:30874/TCP       2d17h
+   domain1-cluster-cluster-1          ClusterIP      10.0.162.19   <none>           8001/TCP             2d20h
+   domain1-managed-server1            ClusterIP      None          <none>           8001/TCP             2d20h
+   domain1-managed-server2            ClusterIP      None          <none>           8001/TCP             2d20h
+   internal-weblogic-operator-svc     ClusterIP      10.0.192.13   <none>           8082/TCP             2d22h
+   kubernetes                         ClusterIP      10.0.0.1      <none>           443/TCP              2d22h
+   ```
+   
+In the example, the URL to access the admin server is: http://52.188.176.103:7001/console
 
 ## Deploy Sample Application
 
