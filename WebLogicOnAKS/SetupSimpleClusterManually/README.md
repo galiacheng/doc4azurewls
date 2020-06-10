@@ -90,7 +90,7 @@ az ad sp create-for-rbac --skip-assignment --name $SP_NAME
 az role assignment create --assignee <appId> --role Contributor
 ```
 
-## Docker Hub
+### Docker Hub
 You will need a Docker Hub account. If you don't have an existing account, please sign up for a new account at [DockerHub](https://hub.docker.com/)). Please note down your username, password and  email for Docker Hub. Also, please do a checkout of [Oracle WebLogic Server](https://hub.docker.com/_/oracle-weblogic-server-12c), we will use 12.2.1.3.
 
 *The following sections of the guide will take you step-by-step through the process of setting up a WebLogic cluster on AKS - remaining as close as possible to a native Kubernetes experience. This allows you to understand and customize each step. If you wish to have a more automated experience that abstracts some lower level details, you can skip to the [Automation](#automation) section.*
