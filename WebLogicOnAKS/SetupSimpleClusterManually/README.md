@@ -44,7 +44,7 @@ The Azure Cloud Shell already has the necessary prerequisites installed. To
 start the Azure Cloud Shell, please go to [Overview of Azure Cloud
 Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 
-### Download Configuration Files
+### Download Guide
 We have created configuration files for an Azure file share and WebLogic domain set up. Please download the latest release of this guide and unzip to your environment. We will use the files in the following steps.
 
 ```
