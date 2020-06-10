@@ -594,9 +594,9 @@ a storage account, a file share, and set up the WebLogic cluster. The following 
    * `new-storage-account-name`: Set to true, as we will use the Admin Console Portal to manage WebLogic Server.
    * `location`: We will persist data to `azurefile` in this example.
    * `file-share-name`: We will persist data to `azurefile` in this example.
-   * `docker-username`: We will persist data to `azurefile` in this example.
-   * `docker-password`: We will persist data to `azurefile` in this example.
-   * `docker-email`: We will persist data to `azurefile` in this example.
+   * `docker-username`: The Docker Hub username from the [Docker Hub](#docker-hub) section.
+   * `docker-password`: The Docker Hub password from the [Docker Hub](#docker-hub) section.
+   * `docker-email`: The Docker Hub email from the [Docker Hub](#docker-hub) section.
    * `service-principal-app-id`: The App ID from the [Create Service Principal for AKS](#create-service-principal-for-aks) section.
    * `service-principal-client-secret`: The client secret from the [Create Service Principal for AKS](#create-service-principal-for-aks) section.
    * `service-principal-tenant-id`: The tenant ID from the [Create Service Principal for AKS](#create-service-principal-for-aks) section.   
