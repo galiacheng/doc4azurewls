@@ -587,11 +587,23 @@ If you want to automate all the above steps, please download this guide to your
 local machine and run the [setup-simple-cluster.sh](automation/setup-simple-cluster.sh) script.
 
 The script will create a resource group, an AKS instance with 3 nodes,
-a storage account, a file share, and set up the WebLogic cluster:
+a storage account, a file share, and set up the WebLogic cluster. The following are the parameters for the script.
+
+   * `new-resource-group-name`: Set to the DockerHub path of the image, with the value `store/oracle/weblogic:12.2.1.3`.
+   * `new-aks-name`: Uncommented and set to the DockerHub credential you created previously, named `regcred` in this example.
+   * `new-storage-account-name`: Set to true, as we will use the Admin Console Portal to manage WebLogic Server.
+   * `location`: We will persist data to `azurefile` in this example.
+   * `file-share-name`: We will persist data to `azurefile` in this example.
+   * `docker-username`: We will persist data to `azurefile` in this example.
+   * `docker-password`: We will persist data to `azurefile` in this example.
+   * `docker-email`: We will persist data to `azurefile` in this example.
+   * `service-principal-app-id`: We will persist data to `azurefile` in this example.
+   * `service-principal-client-secret`: We will persist data to `azurefile` in this example.
+   * `service-principal-tenant-id`: We will persist data to `azurefile` in this example.   
 
 ```
 # cd automation
-bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email service-principle-app-id service-principle-client-secret service-principle-tenant-id
+bash setup-simple-cluster.sh new-resource-group-name new-aks-name new-storage-account-name location file-share-name docker-username docker-password docker-email service-principle-app-id service-principal-client-secret service-principal-tenant-id
 
 ```
 
