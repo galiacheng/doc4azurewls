@@ -11,8 +11,8 @@ portal.
 Table of Contents
 =================
 
-[Prerequisites](#prerequisites)
-[Create AKS cluster](#create-aks-cluster)
+[Prerequisites](#prerequisites)   
+[Create AKS cluster](#create-aks-cluster) 
 [Create Storage and Set Up File Share](#create-storage-and-set-up-file-share)  
 [Install WebLogic Operator](#install-weblogic-operator)  
 [Create WebLogic Domain](#create-weblogic-domain)  
