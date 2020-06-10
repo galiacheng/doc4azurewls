@@ -641,7 +641,7 @@ You may optionally test the cluster by deploying the simple sample application i
 3. Click Install.
 4. Click Upload your file(s).
 5. For the Deployment Archive, click "Choose File".
-6. Go to where this guide is on your local file system (if you are using the Cloud Shell you will need to download the guide locally). Select the file webtestapp.war.
+6. Go to where this guide is on your local file system (if you are using the Cloud Shell you will need to [download the guide locally](#download-guide)). Select the file webtestapp.war.
 7. Click Next. Choose 'Install this deployment as an application'.
 8. Click Next. Select cluster-1 and All servers in the cluster.
 9. Accept the defaults in the next screens and click Finish.
