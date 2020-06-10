@@ -672,17 +672,17 @@ The test application will list the server host and server IP on the page.
 
 ## Access WebLogic Logs
 
-Logs are stored in azure file share, following the steps to access log:
+The logs are stored in the Azure file share. Follow these steps to access the log:
 
-1. Go to Azure portal https://ms.portal.azure.com
-2. Go to your resource group
-3. Open the storage account
-4. Go to file service
-5. Click file share
-6. Click file share name(e.g. weblogic in this example)
-7. Click logs
-8. Click domain1
-   WebLogic Server logs are listed in the folder.
+1. Go to the [Azure Portal](https://ms.portal.azure.com).
+2. Go to your resource group.
+3. Open the storage account.
+4. Go to File shares.
+5. Click the file share name (e.g. weblogic in this example).
+6. Click logs.
+7. Click domain1.
+8. WebLogic server logs are listed in the folder.
+
    ![WebLogic Logs](resources/screenshot-logs.PNG)
 
 ## Troubleshooting
