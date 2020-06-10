@@ -84,7 +84,7 @@ az ad sp create-for-rbac --skip-assignment --name $SP_NAME
 
 # Copy the output to a file, we will use it to 
 # grant your service principal with a contributor role in AKS.
-# Specifically we will need the app ID and client secret later.
+# Specifically we will need the app ID, client secret and tenant ID later.
 
 # Use the <appId> from the output of the last command 
 az role assignment create --assignee <appId> --role Contributor
