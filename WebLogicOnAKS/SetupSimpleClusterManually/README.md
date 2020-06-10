@@ -60,7 +60,7 @@ An AKS cluster requires either an [Azure Active Directory (AD) service principal
 
 We will use a service principal to create an AKS cluster. Follow the commands below to create a new service principal.
 
-If you run commands in your local environment, please run `az login` first. Skip that command if you run on the Azure Cloud Shell.
+If you run commands in your local environment, please run `az login` first. Skip that command if you run on the Azure Cloud Shell. Do set the subscription you want to work with. You can get a list of your subscriptions by running `az account list`.
 
 ```
 # Login
