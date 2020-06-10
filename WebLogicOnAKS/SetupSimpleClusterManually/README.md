@@ -597,7 +597,7 @@ a storage account, a file share, and set up the WebLogic cluster. The following 
    * `docker-username`: We will persist data to `azurefile` in this example.
    * `docker-password`: We will persist data to `azurefile` in this example.
    * `docker-email`: We will persist data to `azurefile` in this example.
-   * `service-principal-app-id`: We will persist data to `azurefile` in this example.
+   * `service-principal-app-id`: The App ID from the .
    * `service-principal-client-secret`: We will persist data to `azurefile` in this example.
    * `service-principal-tenant-id`: We will persist data to `azurefile` in this example.   
 
