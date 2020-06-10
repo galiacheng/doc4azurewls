@@ -687,9 +687,9 @@ The logs are stored in the Azure file share. Follow these steps to access the lo
 
 ## Troubleshooting
 
-1. Get pod error details
+1. **Getting pod error details**
 
-   You may get the following message while creating weblogic domain: "the job status is not Completed!"
+   You may get the following message while creating the WebLogic domain: "the job status is not Completed!"
 
    ```
    status on iteration 20 of 20
@@ -700,8 +700,7 @@ The logs are stored in the Azure file share. Follow these steps to access the lo
    [ERROR] Exiting due to failure - the job status is not Completed!
    ```
 
-   You can get detail error message by running `kubectl describe pod`,
-   as shown here.
+   You can get further error details by running `kubectl describe pod`, as shown here:
 
    ```
    # replace domain1-create-weblogic-sample-domain-job-nj7wl with your pod name
@@ -717,21 +716,21 @@ The logs are stored in the Azure file share. Follow these steps to access the lo
      Warning  FailedMount  119s                 kubelet, aks-nodepool1-58449474-vmss000001  Unable to mount volumes for pod "domain1-create-weblogic-sample-domain-job-qqv6k_default(15706980-73cb-11ea-b804-b2c91b494b00)": timeout expired waiting for volumes to attach or mount for pod "default"/"domain1-create-weblogic-sample-domain-job-qqv6k". list of unmounted volumes=[weblogic-sample-domain-storage-volume]. list of unattached volumes=[create-weblogic-sample-domain-job-cm-volume weblogic-sample-domain-storage-volume weblogic-credentials-volume default-token-zr7bq]
      Warning  FailedMount  114s (x9 over 4m2s)  kubelet, aks-nodepool1-58449474-vmss000001  MountVolume.SetUp failed for volume "azurefile" : Couldn't get secret default/azure-secrea
      ```
-2. Fail to access Admin Console
+2. **Failing to access Admin Console**
 
-   There are different cases for Admin Console failure.
+   There are different reasons for Admin Console failures.
    
-   * Create weblogic domain job fails
+   * **Create WebLogic domain job fails**
 
-   You can check deloy log and find the failure details with kubectl
-   describe pod podname, please go to 1.Get pod error details.
+   You can check the deploy log and find the failure details with `kubectl describe pod podname`. 
+   Please go to 1. Getting pod error details.
 
-   * Process of start Admin Server is still running.
+   * **Process of starting the Admin Server is still running**
 
-   Check with kubectl get svc and if domain1-admin-server is not listed,
-   we need to wait some seconds for Admin Server starts.
+   Check with `kubectl get svc` and if domain1-admin-server is not listed,
+   we need to wait some more for the Admin Server to start.
 
-   The following output is an example that Admin Server starts.
+   The following output is an example of when the Admin Server has started.
 
    ```
    NAME                               TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)              AGE
