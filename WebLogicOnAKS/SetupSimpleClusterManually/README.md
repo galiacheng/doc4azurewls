@@ -90,6 +90,9 @@ az ad sp create-for-rbac --skip-assignment --name $SP_NAME
 az role assignment create --assignee <appId> --role Contributor
 ```
 
+## Docker Hub
+You will need a Docker Hub account. If you don't have an existing account, please sign up for a new account at [DockerHub](https://hub.docker.com/)). Please note down your username, password and  email for Docker Hub. Also, please do a checkout of [Oracle WebLogic Server](https://hub.docker.com/_/oracle-weblogic-server-12c), we will use 12.2.1.3.
+
 *The following sections of the guide will take you step-by-step through the process of setting up a WebLogic cluster on AKS - remaining as close as possible to a native Kubernetes experience. This allows you to understand and customize each step. If you wish to have a more automated experience that abstracts some lower level details, you can skip to the [Automation](#automation) section.*
 
 ## Create Azure Kubernetes Service (AKS) Cluster
@@ -354,11 +357,8 @@ We will use the sample scripts in the Weblogic Operator resources to set up the 
 ./create-weblogic-credentials.sh -u weblogic -p welcome1 -d domain1
 ```
 
-2. Create the DockerHub credentials for pulling the WebLogic image, please change
-   `docker-username`, `docker-password`, `docker-email` to your
-   DockerHub account details (if you don't have an existing account, please sign up for a new account at [DockerHub](https://www.docker.com/)). Also, do a checkout of [Oracle WebLogic
-   Server](https://hub.docker.com/_/oracle-weblogic-server-12c), we will
-   use 12.2.1.3.
+2. Create the Docker Hub credentials for pulling the WebLogic image. Please change
+   `docker-username`, `docker-password`, `docker-email` to your Docker Hub account details.
 
    ```
    kubectl create secret docker-registry regcred \
