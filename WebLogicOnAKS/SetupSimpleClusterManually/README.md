@@ -597,9 +597,9 @@ a storage account, a file share, and set up the WebLogic cluster. The following 
    * `docker-username`: We will persist data to `azurefile` in this example.
    * `docker-password`: We will persist data to `azurefile` in this example.
    * `docker-email`: We will persist data to `azurefile` in this example.
-   * `service-principal-app-id`: The App ID from the .
-   * `service-principal-client-secret`: We will persist data to `azurefile` in this example.
-   * `service-principal-tenant-id`: We will persist data to `azurefile` in this example.   
+   * `service-principal-app-id`: The App ID from the [Create Service Principal for AKS](#create-service-principal-for-aks) section.
+   * `service-principal-client-secret`: The client secret from the [Create Service Principal for AKS](#create-service-principal-for-aks) section.
+   * `service-principal-tenant-id`: The tenant ID from the [Create Service Principal for AKS](#create-service-principal-for-aks) section.   
 
 ```
 # cd automation
