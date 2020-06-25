@@ -26,8 +26,6 @@ Please follow the [Configure WLS LDAP](docs/configure-wls-ldap.md) to configure 
 
 You will integrate Active Directory with WebLogic Server after finishing above steps. Well done!  
 
-For troubleshooting, please go to [troubleshooting](docs/troubleshooting.md)   
-
 ## Referrence
 1. [Can I set up a secure LDAP connection with Azure AD?](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-faq)  
 2. [Configure Active Directory with Weblogic server as Authentication Provider](https://insideclouldworld.wordpress.com/2016/08/21/configure-active-directory-with-weblogic-server-as-authentication-provider/)  
