@@ -27,7 +27,7 @@ We have Azure WebLoigc applications for AAD integration, please go to [Contact M
 
 If you want to configure manually, please follow the [Configure WLS LDAP](docs/configure-wls-ldap.md) to configure WebLogic Server.  
 
-## Step 4: Allow WebLogic Server access AAD LADP Server
+## Step 4: Allow WebLogic Server to access AAD LADP Server
 Follow the steps to add your WebLogic Server IP to network security group of your Azure Domain Service instance.
 * Go to [Azure Portal](https://portal.azure.com/)
 * Get your WebLoigc Server IP address
