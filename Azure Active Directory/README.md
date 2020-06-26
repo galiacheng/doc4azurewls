@@ -37,7 +37,8 @@ Follow the steps to add your WebLogic Server IP to network security group of you
 * Open and edit Inbound security rules -> AllowLDAPs
 * Add the weblogic server IPs to Source IP addressed, and save.
 
-You will can access Azure Active Directory user with WebLogic Server after finishing above steps. Well done!  
+You will can access Azure Active Directory user with WebLogic Server after finishing above steps. Well done!    
+Go to WebLogic Console, Home >Summary of Security Realms >myrealm >Users and Groups to check the users.
 
 ## Referrence
 1. [Can I set up a secure LDAP connection with Azure AD?](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-faq)  
