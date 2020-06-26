@@ -27,7 +27,17 @@ We have Azure WebLoigc applications for AAD integration, please go to [Contact M
 
 If you want to configure manually, please follow the [Configure WLS LDAP](docs/configure-wls-ldap.md) to configure WebLogic Server.  
 
-You will integrate Active Directory with WebLogic Server after finishing above steps. Well done!  
+## Step 4: Allow WebLogic Server access AAD LADP Server
+Follow the steps to add your WebLogic Server IP to network security group of your Azure Domain Service instance.
+* Go to [Azure Portal](https://portal.azure.com/)
+* Get your WebLoigc Server IP address
+  * Open resource group of your WebLogic application
+  * Copy IP addressed of your admin server vm and managed server vm, and save them to a file.
+* Open network security group of your Azure Domain Service
+* Open and edit Inbound security rules -> AllowLDAPs
+* Add the weblogic server IPs to Source IP addressed, and save.
+
+You will can access Azure Active Directory user with WebLogic Server after finishing above steps. Well done!  
 
 ## Referrence
 1. [Can I set up a secure LDAP connection with Azure AD?](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-faq)  
