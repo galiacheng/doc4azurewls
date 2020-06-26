@@ -5,7 +5,7 @@ We will follow [Tutorial: Create and configure an Azure Active Directory Domain 
 Very important steps are listed here:  
 1. DNS domain name: if you don't have a verified one, please input a custome domain name, such as wls-security.com, make sure no naming conflicts with existing DNS namespace, we will use secure LDAP, you must register and own this custom domain name to generate the required certificates.  
 2. [Update DNS settings for the Azure virtual network](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network), we have to update DNS seetings, otherwise, the domain is not accessible.  
-3. [Enable user accounts for Azure AD DS](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/tutorial-create-instance#enable-user-accounts-for-azure-ad-ds), as we will use cloud-only user to login the domain, we have to reset password. Go to https://myapps.microsoft.com/ and change password. It will taka about half an hour for password sync.  
+3. [Enable user accounts for Azure AD DS](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/tutorial-create-instance#enable-user-accounts-for-azure-ad-ds), as we will use cloud-only user to login the domain, we have to reset password. Go to https://myapps.microsoft.com/ and change password. It will take about half an hour for password sync.  
 
 # Step by step  
 1. Make sure domain service is enabled in your tanent.  
