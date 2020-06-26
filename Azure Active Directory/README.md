@@ -22,7 +22,10 @@ Please go to your resource group, click adds-nsg, go to Settings, click Inbound 
 Please follow the [Configure ADDS LDAP](docs/configure-ad-ds-ldap.md) to test LDAP server.  
 
 ## Step 3: Configure WLS LDAP  
-Please follow the [Configure WLS LDAP](docs/configure-wls-ldap.md) to configure WebLogic Server.  
+
+We have Azure WebLoigc applications for AAD integration, please go to [Contact Me](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) for offers.  
+
+If you want to configure manually, please follow the [Configure WLS LDAP](docs/configure-wls-ldap.md) to configure WebLogic Server.  
 
 You will integrate Active Directory with WebLogic Server after finishing above steps. Well done!  
 
