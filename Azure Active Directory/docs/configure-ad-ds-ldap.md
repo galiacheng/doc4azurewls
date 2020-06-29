@@ -47,7 +47,6 @@ Pay attension to the user name, actually, we create user `wlstest@yourtenant.com
    Encryption method: Use SSL encryption  
    Click Certificate Validation and add azure-ad-ds-client.cer  
    Click Check NetWork Parameter, will success if the informations are correct.  
-   ![Secure LDAP](images/secure-adds-ldap.PNG)  
 
 4. Click next  
 5. Authentication  
